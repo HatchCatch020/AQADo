@@ -12,27 +12,28 @@ import sitsa.aqado.InGame;
  */
 public abstract class AbstractCounter implements Counter {
 
-    protected float x, y, dx, dy, width, height, moveBy, boxNum;
+    protected float x, y, dx, dy, width, height, moveBy, boxOccupyingF;
     protected int id;
     protected Image texture;
-    protected AbstractboxGameComponent box;
+    protected AbstractboxGameComponent boxOccupying;
 
-    public AbstractCounter(float x, float y, Image texture, AbstractboxGameComponent box){
+    public AbstractCounter(float x, float y, Image texture, AbstractboxGameComponent boxOccupying){
         this.x = x;
         this.y = y;
         this.dx = 0;
         this.dy = 0;
         this.texture = texture;
-        this.box = box;
-        this.boxNum = 1;
+        this.boxOccupying = boxOccupying;
+        this.boxOccupyingF = 1;
     }
 
     @Override
     public void update(int delta) {
         this.x += delta * dx;
         this.y += delta * dy;
-
-
+        
+        if(boxOccupyingF == 1){
+        }
     }
 
     @Override
@@ -100,6 +101,7 @@ public abstract class AbstractCounter implements Counter {
     @Override
     public void moveByF(float moveBy) {
         float toY = this.getBoxOccupying().getY() - 60;
+        float box = ;
 
         // Attempt one
         if(moveBy == 1){
