@@ -26,8 +26,7 @@ public class InGame extends BasicGameState {
     public boolean comeFromPause = false;
     private Random rand = new Random();
     private boolean hasDieLanded = false;
-
-
+    public Box box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
 
     public InGame(int state) {
 		this.state = state;

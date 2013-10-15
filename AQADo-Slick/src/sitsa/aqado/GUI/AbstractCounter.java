@@ -12,19 +12,19 @@ import sitsa.aqado.InGame;
  */
 public abstract class AbstractCounter implements Counter {
 
-    protected float x, y, dx, dy, width, height, moveBy, boxNum;
+    protected float x, y, dx, dy, width, height, moveBy, boxOccupyingF;
     protected int id;
     protected Image texture;
-    protected AbstractboxGameComponent box;
+    protected AbstractboxGameComponent boxOccupying;
 
-    public AbstractCounter(float x, float y, Image texture, AbstractboxGameComponent box){
+    public AbstractCounter(float x, float y, Image texture, AbstractboxGameComponent boxOccupying){
         this.x = x;
         this.y = y;
         this.dx = 0;
         this.dy = 0;
         this.texture = texture;
-        this.box = box;
-        this.boxNum = 1;
+        this.boxOccupying = boxOccupying;
+        this.boxOccupyingF = 1;
     }
 
     @Override
@@ -32,7 +32,8 @@ public abstract class AbstractCounter implements Counter {
         this.x += delta * dx;
         this.y += delta * dy;
 
-
+        if(boxOccupyingF == 1){
+        }
     }
 
     @Override
@@ -77,13 +78,13 @@ public abstract class AbstractCounter implements Counter {
     }
 
     @Override
-    public void setBoxOccupying(AbstractboxGameComponent box) {
-        this.box = box;
+    public void setBoxOccupying(AbstractboxGameComponent boxOccupying) {
+        this.boxOccupying = boxOccupying;
     }
 
     @Override
-    public void setBoxOccupyingF(float boxNum) {
-        this.boxNum = boxNum;
+    public void setBoxOccupyingF(float boxOccupyingF) {
+        this.boxOccupyingF = boxOccupyingF;
     }
 
     @Override
@@ -93,6 +94,7 @@ public abstract class AbstractCounter implements Counter {
 
     @Override
     public void moveByB(AbstractboxGameComponent toBox) {
+        // TODO moving by the use of the box counter is occupying
         float moveTo = toBox.getY() + 10;
         this.y = moveTo;
     }
@@ -100,11 +102,12 @@ public abstract class AbstractCounter implements Counter {
     @Override
     public void moveByF(float moveBy) {
         float toY = this.getBoxOccupying().getY() - 60;
+        float box = 1;
 
-        // Attempt one
+        // TODO moving by the use of floats
         if(moveBy == 1){
             this.y = toY;
-            this.boxNum = boxNum + 1;
+            this.boxOccupyingF = boxOccupyingF + 1;
         }else if(moveBy == 2){
             this.y = toY - 70;
         }else if(moveBy == 3){
@@ -149,11 +152,11 @@ public abstract class AbstractCounter implements Counter {
 
     @Override
     public float getBoxOccupyingF() {
-        return this.boxNum;
+        return this.boxOccupyingF;
     }
 
     @Override
     public AbstractboxGameComponent getBoxOccupying() {
-        return this.box;
+        return this.boxOccupying;
     }
 }
