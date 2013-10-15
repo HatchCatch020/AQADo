@@ -23,10 +23,9 @@ public class InGame extends BasicGameState {
     private pMenuButton quitToTitleButton, resumeButton, optionsButton, restartButton;
     private boolean PAUSED = false;
     private TrueTypeFont font, font2;
-    public boolean comeFromPause = false;
-    private Random rand = new Random();
     private boolean hasDieLanded = false;
-    public Box box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
+    private Box box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
+    private gameVariables gv;
 
     public InGame(int state) {
 		this.state = state;
@@ -180,6 +179,33 @@ public class InGame extends BasicGameState {
             // TODO counter logic
         if(Keyboard.isKeyDown(Keyboard.KEY_UP)){
             redCounter1.moveByF(1);
+        }
+
+        if(Keyboard.isKeyDown(Keyboard.KEY_W)){
+            float toY = redCounter1.getBoxOccupying().getY() - 60;
+            redCounter1.setDY(-1);
+            if(redCounter1.getY() == toY){
+                redCounter1.setDY(0);
+                redCounter1.setBoxOccupying(box2);
+            }
+        }
+
+        if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+            gameVariables.diceRolled = true;
+        }
+        if(gameVariables.diceRolled == true){
+            if(gameVariables.diceLandedNum == 1){
+                float toY = redCounter1.getY() - 70;
+                redCounter1.setY(toY);
+            }else if(gameVariables.diceLandedNum == 2){
+                float toY = redCounter1.getY() - 140;
+                redCounter1.setY(toY);
+            }else if(gameVariables.diceLandedNum == 3){
+                float toY = redCounter1.getY() - 210;
+                redCounter1.setY(toY);
+            }else if(gameVariables.diceLandedNum == 4){
+                float toY;
+            }
         }
 
         redCounter1.update(delta);

@@ -24,6 +24,7 @@ public interface Counter {
     public void setID(int id);
     public void setBoxOccupying(AbstractboxGameComponent box);
     public void setBoxOccupyingF(float boxNum);
+    public void setBoxWasOccupying(AbstractboxGameComponent box);
     public void setTexture(Image texture);
     public void moveByF(float moveBy);
     public void moveByB(AbstractboxGameComponent toBox);
@@ -36,5 +37,6 @@ public interface Counter {
     public float getID();
     public float getBoxOccupyingF();
     public AbstractboxGameComponent getBoxOccupying();
+    public AbstractboxGameComponent getBoxWasOccupying();
 
 }
