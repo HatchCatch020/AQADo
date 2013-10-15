@@ -111,7 +111,7 @@
       <file leaf-file-name="InGame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="27" selection-start="6157" selection-end="6157" vertical-scroll-proportion="0.62015504">
+            <state line="32" column="5" selection-start="0" selection-end="8033" vertical-scroll-proportion="0.3875969">
               <folding />
             </state>
           </provider>
@@ -147,7 +147,7 @@
       <file leaf-file-name="AbstractCounter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="20" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+            <state line="26" column="20" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -185,9 +185,9 @@
         <option value="$PROJECT_DIR$/src/sitsa/aqado/AQADo.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/Counter.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/Box.java" />
-        <option value="$PROJECT_DIR$/src/sitsa/aqado/InGame.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounter.java" />
+        <option value="$PROJECT_DIR$/src/sitsa/aqado/InGame.java" />
       </list>
     </option>
   </component>
@@ -759,7 +759,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+        <state line="26" column="20" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -780,7 +780,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="27" selection-start="6157" selection-end="6157" vertical-scroll-proportion="0.62015504">
+        <state line="32" column="5" selection-start="0" selection-end="8033" vertical-scroll-proportion="0.3875969">
           <folding />
         </state>
       </provider>

@@ -97,9 +97,7 @@ public class InGame extends BasicGameState {
         blueCounter2.draw(g);
 
         // Draw die
-        if(hasDieLanded == true){
-            font.drawString(10, 40, ""+dieLandedNum, Color.black);
-        }
+        	// TODO draw die
 
         // Draw pause menu
         if(PAUSED == true){

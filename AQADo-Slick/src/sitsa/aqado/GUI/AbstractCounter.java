@@ -31,7 +31,11 @@ public abstract class AbstractCounter implements Counter {
     public void update(int delta) {
         this.x += delta * dx;
         this.y += delta * dy;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 7f68e76db1e3e3ff752bdfa27c8657f00ab319ba
         if(boxOccupyingF == 1){
         }
     }
@@ -102,7 +106,11 @@ public abstract class AbstractCounter implements Counter {
     @Override
     public void moveByF(float moveBy) {
         float toY = this.getBoxOccupying().getY() - 60;
+<<<<<<< HEAD
         float box = 1;
+=======
+        float box = ;
+>>>>>>> 7f68e76db1e3e3ff752bdfa27c8657f00ab319ba
 
         // TODO moving by the use of floats
         if(moveBy == 1){
