@@ -14,6 +14,7 @@ public class AQADo extends StateBasedGame {
 	public final int Name_Input = 2;
 	public final int In_Game = 3;
     public final int How_To = 4;
+    public final int In_Game2 = 5;
 
 	public AQADo(String gamename) {
 		super(gamename);
@@ -21,6 +22,7 @@ public class AQADo extends StateBasedGame {
 		this.addState(new NameInput(Name_Input));
 		this.addState(new InGame(In_Game));
         this.addState(new HowTo(How_To));
+        this.addState(new InGame2(In_Game2));
 	}
 	
 	@Override
@@ -29,11 +31,14 @@ public class AQADo extends StateBasedGame {
 		this.getState(Name_Input).init(container, this);
 		this.getState(In_Game).init(container, this);
         this.getState(How_To).init(container, this);
+        this.getState(In_Game2).init(container, this);
 		
 		this.enterState(Main_Menu);
 	}
 	
 	public static void main(String[] args){
+        //https://www.facebook.com/photo.php?v=10201953806269989&set=vb.242640715860675&type=2&theater
+        //https://www.facebook.com/photo.php?v=10201891215505259&set=vb.242640715860675&type=2&theater
 		try{
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new AQADo("AQADo"));

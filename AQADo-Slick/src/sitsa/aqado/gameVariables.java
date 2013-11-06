@@ -1,6 +1,10 @@
 package sitsa.aqado;
 
+import sitsa.aqado.GUI.AbstractBoxComponent;
+import sitsa.aqado.GUI.AbstractCounterComponent;
 import sitsa.aqado.GUI.Box;
+
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,5 +22,22 @@ public class gameVariables {
     public static boolean diceRolled = false;
     public static float diceLandedNum = 1;
 
-    //public Box box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
+    public static HashMap boxes = new HashMap();
+    public static HashMap counters = new HashMap();
+
+    public static void addBox(AbstractBoxComponent box){
+        boxes.put(new Integer((int) box.getID()), box);
+    }
+
+    public static AbstractBoxComponent getBoxID(int id) {
+        return (AbstractBoxComponent) boxes.get(new Integer(id));
+    }
+
+    public static void addCounter(AbstractCounterComponent counter){
+        counters.put(new Integer((int) counter.getID()), counter);
+    }
+
+    public static AbstractCounterComponent getCounterByID(int id) {
+        return (AbstractCounterComponent) counters.get(new Integer(id));
+    }
 }

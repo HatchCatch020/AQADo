@@ -2,6 +2,8 @@ package sitsa.aqado;
 
 import org.lwjgl.Sys;
 import java.awt.Font;
+
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -82,7 +84,7 @@ public class MainMenu extends BasicGameState {
         }
 
         if(playbutton.isMouseClicked(gc)){
-            game.enterState(3);
+            game.enterState(5);
         }
         if(optionbutton.isMouseClicked(gc)){
             game.enterState(2);

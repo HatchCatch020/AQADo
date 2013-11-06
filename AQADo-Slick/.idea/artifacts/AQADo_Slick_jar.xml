@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="AQADo-Slick:jar">
+  <artifact type="jar" build-on-make="true" name="AQADo-Slick.jar">
     <output-path>$PROJECT_DIR$/out/artifacts/AQADo_Slick_jar</output-path>
     <root id="archive" name="AQADo-Slick.jar">
       <element id="module-output" name="AQADo-Slick" />
@@ -7,6 +7,9 @@
       <element id="library" level="module" name="lwjgl.jar" module-name="AQADo-Slick" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../Jars/slick/lib/slick.jar" path-in-jar="/" />
       <element id="library" level="module" name="slick.jar" module-name="AQADo-Slick" />
+      <element id="directory" name="native">
+        <element id="dir-copy" path="$PROJECT_DIR$/../../Jars/lwjgl/native" />
+      </element>
     </root>
   </artifact>
 </component>
