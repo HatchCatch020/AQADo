@@ -100,7 +100,6 @@ public abstract class AbstractCounter implements Counter {
 
     @Override
     public void moveByB(AbstractboxGameComponent toBox) {
-        // TODO moving by the use of the box counter is occupying
         float moveTo = toBox.getY() + 10;
         this.y = moveTo;
     }
@@ -110,7 +109,6 @@ public abstract class AbstractCounter implements Counter {
         float toY = this.getBoxOccupying().getY() - 60;
         float box = 1;
 
-        // TODO moving by the use of floats
         if(moveBy == 1){
             this.y = toY;
             this.boxOccupyingF = boxOccupyingF + 1;

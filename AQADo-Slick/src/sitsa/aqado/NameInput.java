@@ -14,6 +14,7 @@ import sitsa.aqado.GUI.AbstractButton;
 import java.awt.*;
 import java.awt.Font;
 
+//TODO get player name input
 public class NameInput extends BasicGameState {
 	
 	private int state;
@@ -68,7 +69,6 @@ public class NameInput extends BasicGameState {
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return this.state;
 	}
 

@@ -96,7 +96,6 @@ public class InGame extends BasicGameState {
         blueCounter2.draw(g);
 
         // Draw die
-        	// TODO draw die
 
         // Draw pause menu
         if(PAUSED == true){
@@ -136,7 +135,6 @@ public class InGame extends BasicGameState {
         box1.setSpecialBox(true);
 
         // Die logic
-            //TODO die logic
 
         // Pause menu logic
         delta = getDelta();
@@ -164,7 +162,6 @@ public class InGame extends BasicGameState {
             PAUSED = false;
         }
         if(restartButton.isMouseClicked(gc)){
-            // TODO reset the board
         }
         if(optionsButton.isMouseClicked(gc)){
             game.enterState(2);
@@ -176,7 +173,6 @@ public class InGame extends BasicGameState {
         }
 
         // Counter logic
-            // TODO counter logic
         if(Keyboard.isKeyDown(Keyboard.KEY_UP)){
             redCounter1.moveByF(1);
         }

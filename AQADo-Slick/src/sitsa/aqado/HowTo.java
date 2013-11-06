@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+//TODO HowTo state !
 public class HowTo extends BasicGameState {
 
     private int state;
@@ -17,7 +18,6 @@ public class HowTo extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        // TODO Auto-generated method stub
 
     }
 
@@ -37,7 +37,6 @@ public class HowTo extends BasicGameState {
 
     @Override
     public int getID() {
-        // TODO Auto-generated method stub
         return this.state;
     }
 

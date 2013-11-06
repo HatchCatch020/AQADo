@@ -99,6 +99,13 @@ public class InGame2 extends BasicGameState {
         redCounter2.draw(g);
         blueCounter1.draw(g);
         blueCounter2.draw(g);
+
+        // Render info boxes
+        g.setColor(Color.green.darker().darker());
+        g.fillRect(10, 70, 80, 30);
+        g.setColor(Color.green.darker());
+        g.fillRect(10, 100, 80, 50);
+
         //Pause menu
             pauseBut.draw(670, 5);
             pauseButton.draw(g);
@@ -121,30 +128,35 @@ public class InGame2 extends BasicGameState {
         // Core game logic
             //TODO core game logic
 
-        // Counter logic
-        if(redCounter1.isClicked(gc)){
-            redCounter1.setDY(-1);
-        }
-        if(redCounter2.isClicked(gc)){
-            redCounter2.moveTo(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + 1));
-            redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + 1));
-        }
-        if(blueCounter1.isClicked(gc)){
-            blueCounter1.moveTo(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + 1));
-            blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + 1));
-        }
-        if(blueCounter2.isClicked(gc)){
-            blueCounter2.moveTo(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + 1));
-            blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + 1));
-        }
+        // Dice logic
+            //TODO dice logic
 
+        // Counter logic
+            //TODO dynamic counter movement
         AbstractBoxComponent i = gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1);
 
-        if(redCounter1.getY() == i.getY() + 10){
-            redCounter1.setDY(0);
+        if(redCounter1.isClicked(gc)){
             redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1));
+            redCounter1.moveTo(redCounter1.getBoxIn());
+            redCounter1.getBoxIn().setOccupied(true, redCounter1.getID());
         }
-        System.out.println(redCounter1.getY()+":"+ i.getY());
+        if(redCounter2.isClicked(gc)){
+            redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + 1));
+            redCounter2.moveTo(redCounter2.getBoxIn());
+            redCounter2.getBoxIn().setOccupied(true, redCounter2.getID());
+        }
+        if(blueCounter1.isClicked(gc)){
+            blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + 1));
+            blueCounter1.moveTo(blueCounter1.getBoxIn());
+            blueCounter1.getBoxIn().setOccupied(true, blueCounter1.getID());
+        }
+        if(blueCounter2.isClicked(gc)){
+            blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + 1));
+            blueCounter2.moveTo(blueCounter2.getBoxIn());
+            blueCounter2.getBoxIn().setOccupied(true, blueCounter2.getID());
+        }
+
+
         redCounter1.update(delta);
         redCounter2.update(delta);
         blueCounter1.update(delta);

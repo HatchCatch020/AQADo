@@ -19,8 +19,8 @@ public interface counterComponent {
     public void update(int delta);
     public void setX(float x);
     public void setY(float y);
-    public void setDX(float dx);
-    public void setDY(float dy);
+    public void setDX(double dx);
+    public void setDY(double dy);
     public void setWidth(float width);
     public void setHeight(float height);
     public void setID(float id);
@@ -30,8 +30,8 @@ public interface counterComponent {
     public boolean isClicked(GameContainer gc);
     public float getX();
     public float getY();
-    public float getDX();
-    public float getDY();
+    public double getDX();
+    public double getDY();
     public float getWidth();
     public float getHeight();
     public float getID();

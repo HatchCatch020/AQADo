@@ -19,8 +19,7 @@ public interface boxComponent {
     public void setY(float y);
     public void setWidth(float width);
     public void setHeight(float height);
-    public void setOccupied(boolean occupied);
-    public void setOcupiedBy(float counterNum);
+    public void setOccupied(boolean occupied, float counterNum);
     public void setID(float id);
     public void setNextBox(AbstractBoxComponent nextBox);
     public void setSafeSpace(boolean safeSpace);

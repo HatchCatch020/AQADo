@@ -13,7 +13,8 @@ import sitsa.aqado.gameVariables;
  */
 public abstract class AbstractCounterComponent implements counterComponent {
 
-    protected float x, y, width, height, id, dx, dy;
+    protected float x, y, width, height, id;
+    protected double dx, dy;
     protected Image texture;
     protected AbstractBoxComponent box, boxIn;
 
@@ -47,12 +48,12 @@ public abstract class AbstractCounterComponent implements counterComponent {
     }
 
     @Override
-    public void setDX(float dx) {
+    public void setDX(double dx) {
         this.dx = dx;
     }
 
     @Override
-    public void setDY(float dy) {
+    public void setDY(double dy) {
         this.dy = dy;
     }
 
@@ -83,11 +84,8 @@ public abstract class AbstractCounterComponent implements counterComponent {
 
     @Override
     public void moveTo(AbstractBoxComponent box) {
-        while(this.y >= box.getY() + 10){
-            this.dy = -1;
-        }
-        this.dy = 0;
-        this.box = box;
+            this.y = box.getY() + 10;
+            this.box = box;
     }
 
     @Override
@@ -110,12 +108,12 @@ public abstract class AbstractCounterComponent implements counterComponent {
     }
 
     @Override
-    public float getDX() {
+    public double getDX() {
         return this.dx;
     }
 
     @Override
-    public float getDY() {
+    public double getDY() {
         return this.dy;
     }
 

@@ -47,12 +47,8 @@ public abstract class AbstractBoxComponent implements boxComponent {
     }
 
     @Override
-    public void setOccupied(boolean occupied) {
+    public void setOccupied(boolean occupied, float counterNum) {
         this.occupied = occupied;
-    }
-
-    @Override
-    public void setOcupiedBy(float counterNum) {
         this.counterNum = counterNum;
     }
 
