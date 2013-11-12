@@ -21,7 +21,7 @@ public class NameInput extends BasicGameState {
     private Image bg;
     private Button returnButton;
     private TrueTypeFont font;
-    private TextInput p1Input, p2Input;
+    private textBox p1Input, p2Input;
 
 	public NameInput(int state) {
 		this.state = state;
@@ -33,8 +33,8 @@ public class NameInput extends BasicGameState {
         returnButton = new Button(245, 300, 200, 60, Color.cyan);
         Font awtFont = new java.awt.Font("Arial", java.awt.Font.BOLD, 16);
         font = new TrueTypeFont(awtFont, false);
-        p1Input = new TextInput(container, font, 30, 500, 300, 50);
-        p2Input = new TextInput(container, font, 360, 500, 300, 50);
+        p1Input = new textBox(container, font, 30, 500, 300, 50);
+        p2Input = new textBox(container, font, 360, 500, 300, 50);
 
     }
 
@@ -44,7 +44,7 @@ public class NameInput extends BasicGameState {
         returnButton.draw(g);
         font.drawString(320, 320, "Return", Color.black);
         font.drawString(30, 480, "Player 1:", Color.black);
-        p1Input.setFocus(true);
+        font.drawString(360, 480, "Player 2:", Color.black);
         p1Input.render(gc, g);
         p2Input.render(gc, g);
     }
@@ -57,20 +57,38 @@ public class NameInput extends BasicGameState {
         }else{
             returnButton.setFillColor(Color.cyan.darker());
         }
-        if(returnButton.isMouseClicked(gc) && gameVariables.fromPause == 1){
-            game.enterState(3);
-        }else if(returnButton.isMouseClicked(gc) && gameVariables.fromPause == 0){
+        if(returnButton.isMouseClicked(gc) && gameVariables.fromPause == false){
             game.enterState(1);
+        }
+        if(returnButton.isMouseClicked(gc) && gameVariables.fromPause == true){
+            game.enterState(5);
+            gameVariables.fromPause = false;
         }
 
         // Input logic
         gameVariables.p1Name = p1Input.getText();
+        gameVariables.p2Name = p2Input.getText();
 	}
 
 	@Override
 	public int getID() {
 		return this.state;
 	}
+
+    private static class textBox extends TextInput{
+
+        public textBox(GUIContext container, org.newdawn.slick.Font font, int x, int y, int width, int height) {
+            super(container, font, x, y, width, height);
+        }
+
+        public boolean isMouseClicked(GameContainer gc){
+            if((gc.getInput().getMouseX() >= x) && (gc.getInput().getMouseX() <= x + this.getWidth()) && (gc.getInput().getMouseY() >= y) && (gc.getInput().getMouseY() <= y + this.getHeight()) && gc.getInput().isMousePressed(0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
     private static class Button extends AbstractButton {
         public Button(float x, float y, float width, float height, Color fillColor){

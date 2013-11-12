@@ -9,6 +9,7 @@ import sitsa.aqado.GUI.AbstractButton;
 import sitsa.aqado.GUI.AbstractCounterComponent;
 
 import java.awt.Font;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,9 +26,10 @@ public class InGame2 extends BasicGameState {
     private boolean PAUSED = false;
     private Image bg, pauseBut, pauseOverlay, redCounterTex, blueCounterTex;
     private Button pauseButton;
-    private pMenuButton quitToTitleButton, resumeButton, optionsButton, restartButton;
+    private pMenuButton quitToTitleButton, resumeButton, optionsButton, restartButton, rollButton;
     public boxComponent box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
-    private TrueTypeFont font;
+    private TrueTypeFont font, font1, font2;
+    private Font awtFont, awtFont1, awtFont2;
     private CounterComponent redCounter1, redCounter2, blueCounter1, blueCounter2;
 
     public InGame2(int state){
@@ -46,17 +48,17 @@ public class InGame2 extends BasicGameState {
         redCounterTex = new Image("tex/redCounter.png");
         blueCounterTex = new Image("tex/blueCounter.png");
         // Load boxes
-        box11 = new boxComponent(100, 20, 500, 70, 11);
-        box10 = new boxComponent(100, 90, 500, 70, 10);
-        box9 = new boxComponent(100, 160, 500, 70, 9);
-        box8 = new boxComponent(100, 230, 500, 70, 8);
-        box7 = new boxComponent(100, 300, 500, 70, 7);
-        box6 = new boxComponent(100, 370, 500, 70, 6);
-        box5 = new boxComponent(100, 440, 500, 70, 5);
-        box4 = new boxComponent(100, 510, 500, 70, 4);
-        box3 = new boxComponent(100, 580, 500, 70, 3);
-        box2 = new boxComponent(100, 650, 500, 70, 2);
-        box1 = new boxComponent(100, 720, 500, 70, 1);
+        box11 = new boxComponent(100, 44, 500, 68, 11, Color.white);
+        box10 = new boxComponent(100, 112, 500, 68, 10, Color.black);
+        box9 = new boxComponent(100, 180, 500, 68, 9, Color.white);
+        box8 = new boxComponent(100, 248, 500, 68, 8, Color.black);
+        box7 = new boxComponent(100, 316, 500, 68, 7, Color.white);
+        box6 = new boxComponent(100, 384, 500, 68, 6, Color.black);
+        box5 = new boxComponent(100, 452, 500, 68, 5, Color.white);
+        box4 = new boxComponent(100, 520, 500, 68, 4, Color.black);
+        box3 = new boxComponent(100, 588, 500, 68, 3, Color.white);
+        box2 = new boxComponent(100, 656, 500, 68, 2, Color.black);
+        box1 = new boxComponent(100, 724, 500, 68, 1, Color.white);
         // Load counters
         redCounter1 = new CounterComponent(130, 730, 51, 51, 1, redCounterTex, box1);
         redCounter2 = new CounterComponent(218, 730, 51, 51, 2, redCounterTex, box1);
@@ -72,13 +74,21 @@ public class InGame2 extends BasicGameState {
             optionsButton = new pMenuButton(245, 430, 200, 60, Color.cyan.darker());
             quitToTitleButton = new pMenuButton(245, 500, 200, 60, Color.cyan.darker());
         // Initialize font
-        Font awtFont = new Font("Arial", Font.BOLD, 24);
+        awtFont = new Font("Arial", Font.BOLD, 20);
         font = new TrueTypeFont(awtFont, false);
+        awtFont1 = new Font("Arial", Font.BOLD, 16);
+        font1 = new TrueTypeFont(awtFont1, false);
+        awtFont2 = new Font("Arial", Font.BOLD, 25);
+        font2 = new TrueTypeFont(awtFont2, false);
+
+
+
+        rollButton = new pMenuButton(10, 180, 80, 30, Color.green.darker());
 
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         bg.draw(-600,-800);
         // Render boxes
         box11.draw(g);
@@ -93,6 +103,18 @@ public class InGame2 extends BasicGameState {
         box2.draw(g);
         box1.draw(g);
         g.drawRect(300, 20, 100, 770);
+        font1.drawString(310, 45, "11 - Finish", Color.black);
+        font.drawString(340, 115, "10", Color.black);
+        font.drawString(345, 185, "9", Color.black);
+        font.drawString(345, 255, "8", Color.black);
+        font.drawString(345, 325, "7", Color.black);
+        font.drawString(345, 395, "6", Color.black);
+        font.drawString(345, 465, "5", Color.black);
+        font.drawString(345, 535, "4", Color.black);
+        font.drawString(345, 605, "3", Color.black);
+        font.drawString(345, 675, "2", Color.black);
+        font1.drawString(320, 745, "1 - Start", Color.black);
+
 
         // Render counters
         redCounter1.draw(g);
@@ -105,6 +127,27 @@ public class InGame2 extends BasicGameState {
         g.fillRect(10, 70, 80, 30);
         g.setColor(Color.green.darker());
         g.fillRect(10, 100, 80, 50);
+        font.drawString(30, 75, "Info", Color.black);
+        g.setColor(Color.green.darker().darker());
+        g.fillRect(610, 70, 80, 30);
+        g.setColor(Color.green.darker());
+        g.fillRect(610, 100, 80, 50);
+        font.drawString(620, 75, "Rolled", Color.black);
+        if(gameVariables.isCounterSelected){
+            g.setColor(Color.green.darker());
+            g.fillRect(10, 100, 80, 50);
+        }
+
+
+        // Render dice attributes
+        rollButton.draw(g);
+        font.drawString(30, 184, "Roll", Color.black);
+        if(gameVariables.diceRolled == true){
+            font2.drawString(640, 110, ""+gameVariables.diceLandedNum, Color.black);
+            rollButton.setFillColor(Color.gray.darker());
+            font1.drawString(13, 105, "Select a ", Color.black);
+            font1.drawString(13, 120, "  counter.", Color.black);
+        }
 
         //Pause menu
             pauseBut.draw(670, 5);
@@ -127,13 +170,123 @@ public class InGame2 extends BasicGameState {
 
         // Core game logic
             //TODO core game logic
+        if(gameVariables.diceRolled == true && gameVariables.isCounterSelected == false){
+            if(gameVariables.playerTurn == "p1"){
+                if(redCounter1.isClicked(gc)){
+                    gameVariables.counterSelected = redCounter1;
+                    gameVariables.isCounterSelected = true;
+                    System.out.println(gameVariables.counterSelected.getID());
+                }else if(redCounter2.isClicked(gc)){
+                    gameVariables.counterSelected = redCounter2;
+                    gameVariables.isCounterSelected = true;
+                    System.out.println(gameVariables.counterSelected.getID());
+                }else if(blueCounter1.isClicked(gc)){
+                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                }else if(blueCounter2.isClicked(gc)){
+                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                }
+            }
+            if(gameVariables.playerTurn == "p2"){
+                if(redCounter1.isClicked(gc)){
+                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                }else if(redCounter2.isClicked(gc)){
+                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                }else if(blueCounter1.isClicked(gc)){
+                    gameVariables.counterSelected = blueCounter1;
+                    gameVariables.isCounterSelected = true;
+                    System.out.println(gameVariables.counterSelected.getID());
+                }else if(blueCounter2.isClicked(gc)){
+                    gameVariables.counterSelected = blueCounter2;
+                    gameVariables.isCounterSelected = true;
+                    System.out.println(gameVariables.counterSelected.getID());
+                }
+            }
+        }else{
+            if(redCounter1.isClicked(gc)){
+                System.out.println("You must roll the dice first");
+            }else if(redCounter2.isClicked(gc)){
+                System.out.println("You must roll the dice first");
+            }else if(blueCounter1.isClicked(gc)){
+                System.out.println("You must roll the dice first");
+            }else if(blueCounter2.isClicked(gc)){
+                System.out.println("You must roll the dice first");
+            }
+        }
+
+        if(gameVariables.isCounterSelected == true){
+            if(gameVariables.counterSelected == redCounter1){
+                if(gameVariables.isLegalMove1(redCounter1)){
+                    redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                    redCounter1.moveTo(redCounter1.getBoxIn());
+                    redCounter1.getBoxIn().setOccupied(true, redCounter1.getID());
+                    gameVariables.moveMade = true;
+                }
+            }else if(gameVariables.counterSelected == redCounter2){
+                if(gameVariables.isLegalMove1(redCounter2)){
+                    redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                    redCounter2.moveTo(redCounter2.getBoxIn());
+                    redCounter2.getBoxIn().setOccupied(true, redCounter2.getID());
+                    gameVariables.moveMade = true;
+                }
+            }else if(gameVariables.counterSelected == blueCounter1){
+                if(gameVariables.isLegalMove2(blueCounter1)){
+                    blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                    blueCounter1.moveTo(blueCounter1.getBoxIn());
+                    blueCounter1.getBoxIn().setOccupied(true, blueCounter1.getID());
+                    gameVariables.moveMade = true;
+                }
+            }else if(gameVariables.counterSelected == blueCounter2){
+                if(gameVariables.isLegalMove2(blueCounter2)){
+                    blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                    blueCounter2.moveTo(blueCounter2.getBoxIn());
+                    blueCounter2.getBoxIn().setOccupied(true, blueCounter2.getID());
+                    gameVariables.moveMade = true;
+                }
+            }
+        }
+
+        if(gameVariables.moveMade == true){
+            gameVariables.playerTurn = "p2";
+            gameVariables.counterSelected = null;
+            gameVariables.isCounterSelected = false;
+            gameVariables.diceRolled = false;
+            gameVariables.diceLandedNum = 0;
+            gameVariables.moveMade = false;
+        }
 
         // Dice logic
             //TODO dice logic
+        if(gameVariables.diceRolled == false){
+            if(rollButton.isMouseOn(gc)){
+                rollButton.setFillColor(Color.green.darker().darker());
+            }else{
+                rollButton.setFillColor(Color.green.darker());
+            }
+            if(rollButton.isMouseClicked(gc)){
+                gameVariables.diceRolled = true;
+                Random randomGenerator = new Random();
+                int low = 1;
+                int high = 5;
+                int randomInt = 0;
+                for (int idx = 1; idx <= 10; ++idx){
+                    randomInt = randomGenerator.nextInt(high-low) + low;
+                    System.out.println("Generated : " + randomInt);
+                }
+                gameVariables.diceLandedNum = randomInt;
+            }
+        }else if(gameVariables.diceRolled == true){
+            if(rollButton.isMouseClicked(gc)){
+
+            }
+            if(rollButton.isMouseOn(gc)){
+                rollButton.setFillColor(Color.gray.darker());
+            }
+        }
+
 
         // Counter logic
             //TODO dynamic counter movement
-        AbstractBoxComponent i = gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1);
+        /*AbstractBoxComponent i = gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1);
 
         if(redCounter1.isClicked(gc)){
             redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1));
@@ -154,7 +307,7 @@ public class InGame2 extends BasicGameState {
             blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + 1));
             blueCounter2.moveTo(blueCounter2.getBoxIn());
             blueCounter2.getBoxIn().setOccupied(true, blueCounter2.getID());
-        }
+        }*/
 
 
         redCounter1.update(delta);
@@ -194,11 +347,14 @@ public class InGame2 extends BasicGameState {
                     // TODO fix bug making line width thinner
                     gc.reinit();
                     PAUSED = false;
+                    gameVariables.diceRolled = false;
+                    gameVariables.moveMade = false;
+                    gameVariables.diceLandedNum = 0;
                     game.enterState(5);
                 }
                 if(optionsButton.isMouseClicked(gc)){
                     game.enterState(2);
-                    gameVariables.fromPause = 1;
+                    gameVariables.fromPause = true;
                 }
                 if(quitToTitleButton.isMouseClicked(gc)){
                     game.enterState(1);
@@ -245,9 +401,11 @@ public class InGame2 extends BasicGameState {
     private static class boxComponent extends AbstractBoxComponent{
 
         float nextBoxNum = 0;
+        Color color;
 
-        public boxComponent(float x, float y, float width, float height, float boxNum){
+        public boxComponent(float x, float y, float width, float height, float boxNum, Color color){
             super(x, y, width, height, boxNum);
+            this.color = color;
         }
 
         @Override

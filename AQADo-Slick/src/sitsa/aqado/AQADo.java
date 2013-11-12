@@ -12,7 +12,6 @@ public class AQADo extends StateBasedGame {
 	
 	public final int Main_Menu = 1;
 	public final int Name_Input = 2;
-	public final int In_Game = 3;
     public final int How_To = 4;
     public final int In_Game2 = 5;
 
@@ -20,7 +19,6 @@ public class AQADo extends StateBasedGame {
 		super(gamename);
 		this.addState(new MainMenu(Main_Menu));
 		this.addState(new NameInput(Name_Input));
-		this.addState(new InGame(In_Game));
         this.addState(new HowTo(How_To));
         this.addState(new InGame2(In_Game2));
 	}
@@ -29,7 +27,6 @@ public class AQADo extends StateBasedGame {
 	public void initStatesList(GameContainer container) throws SlickException {
 		this.getState(Main_Menu).init(container, this);
 		this.getState(Name_Input).init(container, this);
-		this.getState(In_Game).init(container, this);
         this.getState(How_To).init(container, this);
         this.getState(In_Game2).init(container, this);
 		
