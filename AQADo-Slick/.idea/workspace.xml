@@ -11,13 +11,13 @@
     <ignored path="AQADo-Slick.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AQADo.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384012582916" ignored="false" />
-    <file path="/fragment.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383692348665" ignored="false" />
+    <file path="/fragment.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384273442750" ignored="false" />
     <file path="/MainMenu.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383396238195" ignored="false" />
     <file path="/Button.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381510195579" ignored="false" />
     <file path="/AbstractButton.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381508867548" ignored="false" />
     <file path="/HowTo.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383766345751" ignored="false" />
     <file path="/boxGameComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383491537638" ignored="false" />
-    <file path="/Dummy.txt" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384083371779" ignored="false" />
+    <file path="/Dummy.txt" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384285615874" ignored="false" />
     <file path="/AbstractbocGameComponent.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381439002012" ignored="false" />
     <file path="/AbstractboxGameComponent.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381511789630" ignored="false" />
     <file path="/InGame.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383396707875" ignored="false" />
@@ -28,11 +28,11 @@
     <file path="/playerNames.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381573121666" ignored="false" />
     <file path="/a.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381669709557" ignored="false" />
     <file path="/sample.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381669709043" ignored="false" />
-    <file path="/gameVariables.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384115496080" ignored="false" />
+    <file path="/gameVariables.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384292045039" ignored="false" />
     <file path="/Box.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1381774716061" ignored="false" />
-    <file path="/InGame2.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384236624570" ignored="false" />
+    <file path="/InGame2.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384291808540" ignored="false" />
     <file path="/boxComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383769567361" ignored="false" />
-    <file path="/AbstractBoxComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383769534134" ignored="false" />
+    <file path="/AbstractBoxComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384291369946" ignored="false" />
     <file path="/counterComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383760793919" ignored="false" />
     <file path="/AbstractCounterComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383768436302" ignored="false" />
     <file path="/counterListener.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384041227764" ignored="false" />
@@ -99,7 +99,7 @@
       <file leaf-file-name="InGame2.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="412" column="36" selection-start="17350" selection-end="17350" vertical-scroll-proportion="4.989011">
+            <state line="255" column="52" selection-start="11851" selection-end="11851" vertical-scroll-proportion="0.7864583">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,10 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AQADo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/AQADo.java">
+      <file leaf-file-name="AbstractBoxComponent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="52" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0">
+            <state line="106" column="34" selection-start="2199" selection-end="2199" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,28 +119,10 @@
       <file leaf-file-name="gameVariables.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0">
+            <state line="70" column="9" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractCounterComponent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounterComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="13" selection-start="1958" selection-end="1958" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractBoxComponent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="5" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -172,13 +154,13 @@
         <option value="$PROJECT_DIR$/src/sitsa/aqado/InGame.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounter.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounterComponent.java" />
-        <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/boxComponent.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/events/Initiator.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/events/counterListener.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/events/Responder.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/AQADo.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/NameInput.java" />
+        <option value="$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java" />
         <option value="$PROJECT_DIR$/src/sitsa/aqado/InGame2.java" />
       </list>
@@ -402,14 +384,14 @@
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jars/lwjgl/native" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jars/lwjgl/native" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="aqado" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -424,8 +406,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -445,6 +427,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -472,19 +467,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -611,17 +593,17 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39775562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39687055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2817955" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19583932" sideWeight="0.7182045" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19583932" sideWeight="0.7531172" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.71321696" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17503586" sideWeight="0.6022444" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2817955" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17503586" sideWeight="0.7531172" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2468828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -725,23 +707,9 @@
         <state line="2" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.03875969" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/counterComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="28" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/HowTo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="0" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="3292" selection-end="3292" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
@@ -767,46 +735,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="5" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/AQADo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="52" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounterComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="13" selection-start="1958" selection-end="1958" vertical-scroll-proportion="0.0">
+        <state line="29" column="52" selection-start="914" selection-end="914" vertical-scroll-proportion="0.44573644">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../Jars/lwjgl/jar/lwjgl.jar!/org/lwjgl/opengl/MacOSXContextImplementation.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="31" selection-start="2610" selection-end="2610" vertical-scroll-proportion="0.80815345">
+        <state line="49" column="31" selection-start="2610" selection-end="2610" vertical-scroll-proportion="0.80815345" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="3292" selection-end="3292" vertical-scroll-proportion="1.9777777">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/counterComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="28" selection-start="541" selection-end="541" vertical-scroll-proportion="0.40104166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractCounterComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="16" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.3321492">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="34" selection-start="2199" selection-end="2199" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="9" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="412" column="36" selection-start="17350" selection-end="17350" vertical-scroll-proportion="4.989011">
+        <state line="255" column="52" selection-start="11851" selection-end="11851" vertical-scroll-proportion="0.7864583">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

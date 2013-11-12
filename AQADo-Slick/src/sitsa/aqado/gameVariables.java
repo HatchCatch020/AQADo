@@ -17,7 +17,7 @@ public class gameVariables {
     public static String p1Name;
     public static String p2Name;
     public static boolean fromPause = false;
-    public static String playerTurn = "p2";
+    public static String playerTurn = "p1";
 
     public static boolean diceRolled = false;
     public static int diceLandedNum = 0;
@@ -47,17 +47,34 @@ public class gameVariables {
     }
 
     public static boolean isLegalMove1(AbstractCounterComponent counter){
-        if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 3 || counter.getBoxIn().getOccupiedBy() == 4) && counter.getBoxIn().nextBox().getID() == 11){
+        /*if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 3 || counter.getBoxIn().getOccupiedBy() == 4) && counter.getBoxIn().nextBox().getID() == 11){
             return false;
         }else{
             return true;
+        }*/
+        if(nextBox(counter.getBoxIn()).isOccupied() && (nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4) && nextBox(counter.getBoxIn()).getID() == 11){
+            return false;
+        }else{
+            return  true;
         }
     }
     public static boolean isLegalMove2(AbstractCounterComponent counter){
-        if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 1 || counter.getBoxIn().getOccupiedBy() == 2) && counter.getBoxIn().nextBox().getID() == 11){
+        /*if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 1 || counter.getBoxIn().getOccupiedBy() == 2) && counter.getBoxIn().nextBox().getID() == 11){
             return false;
         }else{
             return true;
+        }*/
+        if(nextBox(counter.getBoxIn()).isOccupied() && (nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2) && nextBox(counter.getBoxIn()).getID() == 11){
+            return false;
+        }else{
+            return  true;
         }
     }
+
+    public static AbstractBoxComponent nextBox(AbstractBoxComponent after){
+        int i = (int) after.getID() + 1;
+        AbstractBoxComponent nextBox = gameVariables.getBoxID(i);
+        return nextBox;
+    }
+
 }

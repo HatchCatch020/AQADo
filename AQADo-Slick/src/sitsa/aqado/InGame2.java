@@ -24,7 +24,7 @@ public class InGame2 extends BasicGameState {
 
     private int state;
     private boolean PAUSED = false;
-    private Image bg, pauseBut, pauseOverlay, redCounterTex, blueCounterTex;
+    private Image bg, pauseBut, pauseOverlay, redCounterTex, blueCounterTex, sbOverlay, sbOverlay1, sbOverlay2, ibOverlay;
     private Button pauseButton;
     private pMenuButton quitToTitleButton, resumeButton, optionsButton, restartButton, rollButton;
     public boxComponent box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
@@ -45,6 +45,10 @@ public class InGame2 extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         // Initialize images
         bg = new Image("tex/bg300x400.png");
+        sbOverlay = new Image("tex/safeBoxOverlay-01.png");
+        sbOverlay1 = new Image("tex/safeBoxOverlay-01.png");
+        sbOverlay2 = new Image("tex/safeBoxOverlay-01.png");
+        ibOverlay = new Image("tex/infoBoxOverlay-01.png");
         redCounterTex = new Image("tex/redCounter.png");
         blueCounterTex = new Image("tex/blueCounter.png");
         // Load boxes
@@ -91,6 +95,10 @@ public class InGame2 extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         bg.draw(-600,-800);
         // Render boxes
+        ibOverlay.draw(100, 6);
+        sbOverlay.draw(100, 452);
+        sbOverlay1.draw(100, 724);
+        sbOverlay2.draw(100, 44);
         box11.draw(g);
         box10.draw(g);
         box9.draw(g);
@@ -102,8 +110,8 @@ public class InGame2 extends BasicGameState {
         box3.draw(g);
         box2.draw(g);
         box1.draw(g);
-        g.drawRect(300, 44, 100, 680);
-        g.drawRect(100, 10, 500, 33);
+        g.drawRect(300, 44, 100, 748);
+        g.drawRect(100, 6, 500, 38);
         font1.drawString(310, 45, "11 - Finish", Color.black);
         font.drawString(340, 115, "10", Color.black);
         font.drawString(345, 185, "9", Color.black);
@@ -146,8 +154,7 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.diceRolled == true){
             font2.drawString(640, 110, ""+gameVariables.diceLandedNum, Color.black);
             rollButton.setFillColor(Color.gray.darker());
-            font1.drawString(13, 105, "Select a ", Color.black);
-            font1.drawString(13, 120, "  counter.", Color.black);
+            font2.drawString(260, 10, "Select a counter.", Color.black);
         }
 
         //Pause menu
@@ -177,6 +184,7 @@ public class InGame2 extends BasicGameState {
                     gameVariables.counterSelected = redCounter1;
                     gameVariables.isCounterSelected = true;
                     System.out.println(gameVariables.counterSelected.getID());
+                    System.out.println(gameVariables.nextBox(redCounter1.getBoxIn()).getID());
                 }else if(redCounter2.isClicked(gc)){
                     gameVariables.counterSelected = redCounter2;
                     gameVariables.isCounterSelected = true;
@@ -221,6 +229,7 @@ public class InGame2 extends BasicGameState {
                     redCounter1.moveTo(redCounter1.getBoxIn());
                     redCounter1.getBoxIn().setOccupied(true, redCounter1.getID());
                     gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p2";
                 }
             }else if(gameVariables.counterSelected == redCounter2){
                 if(gameVariables.isLegalMove1(redCounter2)){
@@ -228,6 +237,7 @@ public class InGame2 extends BasicGameState {
                     redCounter2.moveTo(redCounter2.getBoxIn());
                     redCounter2.getBoxIn().setOccupied(true, redCounter2.getID());
                     gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p2";
                 }
             }else if(gameVariables.counterSelected == blueCounter1){
                 if(gameVariables.isLegalMove2(blueCounter1)){
@@ -235,6 +245,7 @@ public class InGame2 extends BasicGameState {
                     blueCounter1.moveTo(blueCounter1.getBoxIn());
                     blueCounter1.getBoxIn().setOccupied(true, blueCounter1.getID());
                     gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p1";
                 }
             }else if(gameVariables.counterSelected == blueCounter2){
                 if(gameVariables.isLegalMove2(blueCounter2)){
@@ -242,12 +253,12 @@ public class InGame2 extends BasicGameState {
                     blueCounter2.moveTo(blueCounter2.getBoxIn());
                     blueCounter2.getBoxIn().setOccupied(true, blueCounter2.getID());
                     gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p1";
                 }
             }
         }
 
         if(gameVariables.moveMade == true){
-            gameVariables.playerTurn = "p2";
             gameVariables.counterSelected = null;
             gameVariables.isCounterSelected = false;
             gameVariables.diceRolled = false;

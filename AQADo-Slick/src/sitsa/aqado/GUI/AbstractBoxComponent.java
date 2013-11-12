@@ -104,11 +104,8 @@ public abstract class AbstractBoxComponent implements boxComponent {
 
     @Override
     public AbstractBoxComponent nextBox() {
-        int i  = (int) this.getID() + 1;
+        int i = (int) this.id + 1;
         this.nextBox = gameVariables.getBoxID(i);
-        if(this.id == 11){
-            return null;
-        }
         return gameVariables.getBoxID(i);
     }
 
