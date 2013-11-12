@@ -103,6 +103,7 @@ public class InGame2 extends BasicGameState {
         box2.draw(g);
         box1.draw(g);
         g.drawRect(300, 44, 100, 680);
+        g.drawRect(100, 10, 500, 33);
         font1.drawString(310, 45, "11 - Finish", Color.black);
         font.drawString(340, 115, "10", Color.black);
         font.drawString(345, 185, "9", Color.black);
