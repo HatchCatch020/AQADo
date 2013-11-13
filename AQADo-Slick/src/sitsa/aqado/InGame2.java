@@ -143,7 +143,7 @@ public class InGame2 extends BasicGameState {
         g.fillRect(610, 100, 80, 50);
         font.drawString(620, 75, "Rolled", Color.black);
         if(gameVariables.isCounterSelected){
-            ibOverlay.draw(100, 6);
+            drawInfo();
         }
 
 
@@ -153,7 +153,7 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.diceRolled == true){
             font2.drawString(640, 110, ""+gameVariables.diceLandedNum, Color.black);
             rollButton.setFillColor(Color.gray.darker());
-            ibOverlay.draw(100, 6);
+            drawInfo();
             font2.drawString(260, 10, "Select a counter.", Color.black);
         }
 
@@ -190,19 +190,19 @@ public class InGame2 extends BasicGameState {
                     gameVariables.isCounterSelected = true;
                     System.out.println(gameVariables.counterSelected.getID());
                 }else if(blueCounter1.isClicked(gc)){
-                    ibOverlay.draw(100, 6);
+                    drawInfo();
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter2.isClicked(gc)){
-                    ibOverlay.draw(100, 6);
+                    drawInfo();
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }
             }
             if(gameVariables.playerTurn == "p2"){
                 if(redCounter1.isClicked(gc)){
-                   ibOverlay.draw(100, 6);
+                    drawInfo();
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(redCounter2.isClicked(gc)){
-                    ibOverlay.draw(100, 6);
+                    drawInfo();
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter1.isClicked(gc)){
                     gameVariables.counterSelected = blueCounter1;
@@ -216,16 +216,16 @@ public class InGame2 extends BasicGameState {
             }
         }else{
             if(redCounter1.isClicked(gc)){
-                ibOverlay.draw(100, 6);
+                drawInfo();
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(redCounter2.isClicked(gc)){
-                ibOverlay.draw(100, 6);
+                drawInfo();
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(blueCounter1.isClicked(gc)){
-                ibOverlay.draw(100, 6);
+                drawInfo();
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(blueCounter2.isClicked(gc)){
-                ibOverlay.draw(100, 6);
+                drawInfo();
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }
         }
@@ -382,6 +382,11 @@ public class InGame2 extends BasicGameState {
                     PAUSED = false;
                 }
             }
+    }
+    
+    public void drawInfo(){
+        ibOverlay.draw(100, 6);
+        g.drawRect(100, 6, 500, 38);
     }
 
     private static class Button extends AbstractButton {
