@@ -132,19 +132,18 @@ public class InGame2 extends BasicGameState {
         blueCounter2.draw(g);
 
         // Render info boxes
-        g.setColor(Color.green.darker().darker());
+        /*g.setColor(Color.green.darker().darker());
         g.fillRect(10, 70, 80, 30);
         g.setColor(Color.green.darker());
         g.fillRect(10, 100, 80, 50);
-        font.drawString(30, 75, "Info", Color.black);
+        font.drawString(30, 75, "Info", Color.black);*/
         g.setColor(Color.green.darker().darker());
         g.fillRect(610, 70, 80, 30);
         g.setColor(Color.green.darker());
         g.fillRect(610, 100, 80, 50);
         font.drawString(620, 75, "Rolled", Color.black);
         if(gameVariables.isCounterSelected){
-            g.setColor(Color.green.darker());
-            g.fillRect(10, 100, 80, 50);
+            ibOverlay.draw(100, 6);
         }
 
 
@@ -154,6 +153,7 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.diceRolled == true){
             font2.drawString(640, 110, ""+gameVariables.diceLandedNum, Color.black);
             rollButton.setFillColor(Color.gray.darker());
+            ibOverlay.draw(100, 6);
             font2.drawString(260, 10, "Select a counter.", Color.black);
         }
 
@@ -190,16 +190,20 @@ public class InGame2 extends BasicGameState {
                     gameVariables.isCounterSelected = true;
                     System.out.println(gameVariables.counterSelected.getID());
                 }else if(blueCounter1.isClicked(gc)){
-                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                    ibOverlay.draw(100, 6);
+                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter2.isClicked(gc)){
-                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                    ibOverlay.draw(100, 6);
+                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }
             }
             if(gameVariables.playerTurn == "p2"){
                 if(redCounter1.isClicked(gc)){
-                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                   ibOverlay.draw(100, 6);
+                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(redCounter2.isClicked(gc)){
-                    System.out.println("You must select a "+gameVariables.playerTurn+"'s counter.");
+                    ibOverlay.draw(100, 6);
+                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter1.isClicked(gc)){
                     gameVariables.counterSelected = blueCounter1;
                     gameVariables.isCounterSelected = true;
@@ -212,13 +216,17 @@ public class InGame2 extends BasicGameState {
             }
         }else{
             if(redCounter1.isClicked(gc)){
-                System.out.println("You must roll the dice first");
+                ibOverlay.draw(100, 6);
+                font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(redCounter2.isClicked(gc)){
-                System.out.println("You must roll the dice first");
+                ibOverlay.draw(100, 6);
+                font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(blueCounter1.isClicked(gc)){
-                System.out.println("You must roll the dice first");
+                ibOverlay.draw(100, 6);
+                font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(blueCounter2.isClicked(gc)){
-                System.out.println("You must roll the dice first");
+                ibOverlay.draw(100, 6);
+                font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }
         }
 
@@ -283,6 +291,7 @@ public class InGame2 extends BasicGameState {
                 for (int idx = 1; idx <= 10; ++idx){
                     randomInt = randomGenerator.nextInt(high-low) + low;
                     System.out.println("Generated : " + randomInt);
+                    //font2.drawString(640, 110, ""+randomInt, Color.black);
                 }
                 gameVariables.diceLandedNum = randomInt;
             }
