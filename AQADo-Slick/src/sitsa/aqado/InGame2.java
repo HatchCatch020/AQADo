@@ -191,19 +191,19 @@ public class InGame2 extends BasicGameState {
                     System.out.println(gameVariables.counterSelected.getID());
                 }else if(blueCounter1.isClicked(gc)){
                     ibOverlay.draw(100, 6);
-                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
+                    font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter2.isClicked(gc)){
                     ibOverlay.draw(100, 6);
-                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
+                    font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }
             }
             if(gameVariables.playerTurn == "p2"){
                 if(redCounter1.isClicked(gc)){
                    ibOverlay.draw(100, 6);
-                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
+                    font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(redCounter2.isClicked(gc)){
                     ibOverlay.draw(100, 6);
-                    font2.drawString(230, 10, "You mus select "+gameVariables.playerTurn+"'s counter", Color.black);
+                    font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter1.isClicked(gc)){
                     gameVariables.counterSelected = blueCounter1;
                     gameVariables.isCounterSelected = true;
