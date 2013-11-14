@@ -18,6 +18,8 @@ public class gameVariables {
     public static String p2Name;
     public static boolean fromPause = false;
     public static String playerTurn = "p1";
+    public static boolean isOccupiedByCounter;
+    public static AbstractCounterComponent getCounterOccupiedBy;
 
     public static boolean diceRolled = false;
     public static int diceLandedNum = 0;
@@ -47,34 +49,38 @@ public class gameVariables {
     }
 
     public static boolean isLegalMove1(AbstractCounterComponent counter){
-        /*if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 3 || counter.getBoxIn().getOccupiedBy() == 4) && counter.getBoxIn().nextBox().getID() == 11){
-            return false;
-        }else{
+        if(nextBox(counter.getBoxIn()).isSafeSpace() || nextBox(counter.getBoxIn()).isOccupied() == false){
             return true;
-        }*/
-        if(nextBox(counter.getBoxIn()).isOccupied() && (nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4) && nextBox(counter.getBoxIn()).getID() == 11){
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2 || counter.getBoxIn().getID() == 11){
             return false;
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4){
+            isOccupiedByCounter = true;
+            getCounterOccupiedBy = getCounterByID((int) nextBox(counter.getBoxIn()).getOccupiedBy());
+            return true;
         }else{
-            return  true;
+            return false;
         }
     }
+
     public static boolean isLegalMove2(AbstractCounterComponent counter){
-        /*if(counter.getBoxIn().nextBox().isOccupied() && (counter.getBoxIn().getOccupiedBy() == 1 || counter.getBoxIn().getOccupiedBy() == 2) && counter.getBoxIn().nextBox().getID() == 11){
-            return false;
-        }else{
+        if(nextBox(counter.getBoxIn()).isSafeSpace() || nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 3){
+            System.out.println("Legal Move.");
             return true;
-        }*/
-        if(nextBox(counter.getBoxIn()).isOccupied() && (nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2) && nextBox(counter.getBoxIn()).getID() == 11){
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2 || counter.getBoxIn().getID() == 11){
+            System.out.println("Next box was occupied by counter "+nextBox(counter.getBoxIn()).getOccupiedBy());
             return false;
+        }else if(nextBox(counter.getBoxIn()).isOccupied() == false){
+            System.out.println("next box was empty.");
+            return true;
         }else{
-            return  true;
+            System.out.println("N/A");
+            return false;
         }
     }
 
     public static AbstractBoxComponent nextBox(AbstractBoxComponent after){
-        int i = (int) after.getID() + 1;
+        int i = (int) after.getID() + diceLandedNum;
         AbstractBoxComponent nextBox = gameVariables.getBoxID(i);
         return nextBox;
     }
-
 }

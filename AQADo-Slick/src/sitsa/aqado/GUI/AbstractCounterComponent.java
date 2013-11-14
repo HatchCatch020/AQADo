@@ -75,6 +75,7 @@ public abstract class AbstractCounterComponent implements counterComponent {
     @Override
     public void setBoxIn(AbstractBoxComponent boxIn) {
         this.boxIn = boxIn;
+        boxIn.setOccupied(true, this.getID());
     }
 
     @Override

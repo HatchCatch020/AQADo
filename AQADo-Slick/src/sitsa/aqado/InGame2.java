@@ -63,6 +63,8 @@ public class InGame2 extends BasicGameState {
         box3 = new boxComponent(100, 588, 500, 68, 3, Color.white);
         box2 = new boxComponent(100, 656, 500, 68, 2, Color.black);
         box1 = new boxComponent(100, 724, 500, 68, 1, Color.white);
+        box1.setSafeSpace(true);
+        box5.setSafeSpace(true);
         // Load counters
         redCounter1 = new CounterComponent(130, 730, 51, 51, 1, redCounterTex, box1);
         redCounter2 = new CounterComponent(218, 730, 51, 51, 2, redCounterTex, box1);
@@ -111,7 +113,6 @@ public class InGame2 extends BasicGameState {
         box2.draw(g);
         box1.draw(g);
         g.drawRect(300, 44, 100, 748);
-        g.drawRect(100, 6, 500, 38);
         font1.drawString(310, 45, "11 - Finish", Color.black);
         font.drawString(340, 115, "10", Color.black);
         font.drawString(345, 185, "9", Color.black);
@@ -137,13 +138,14 @@ public class InGame2 extends BasicGameState {
         g.setColor(Color.green.darker());
         g.fillRect(10, 100, 80, 50);
         font.drawString(30, 75, "Info", Color.black);*/
+        g.drawRect(100, 6, 500, 38);
         g.setColor(Color.green.darker().darker());
         g.fillRect(610, 70, 80, 30);
         g.setColor(Color.green.darker());
         g.fillRect(610, 100, 80, 50);
         font.drawString(620, 75, "Rolled", Color.black);
         if(gameVariables.isCounterSelected){
-            drawInfo();
+            drawIB(gc.getGraphics());
         }
 
 
@@ -153,9 +155,11 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.diceRolled == true){
             font2.drawString(640, 110, ""+gameVariables.diceLandedNum, Color.black);
             rollButton.setFillColor(Color.gray.darker());
-            drawInfo();
+            drawIB(gc.getGraphics());
             font2.drawString(260, 10, "Select a counter.", Color.black);
         }
+
+        // Render logic
 
         //Pause menu
             pauseBut.draw(670, 5);
@@ -190,19 +194,19 @@ public class InGame2 extends BasicGameState {
                     gameVariables.isCounterSelected = true;
                     System.out.println(gameVariables.counterSelected.getID());
                 }else if(blueCounter1.isClicked(gc)){
-                    drawInfo();
+                    drawIB(gc.getGraphics());
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter2.isClicked(gc)){
-                    drawInfo();
+                    drawIB(gc.getGraphics());
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }
             }
             if(gameVariables.playerTurn == "p2"){
                 if(redCounter1.isClicked(gc)){
-                    drawInfo();
+                    drawIB(gc.getGraphics());
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(redCounter2.isClicked(gc)){
-                    drawInfo();
+                    drawIB(gc.getGraphics());
                     font2.drawString(230, 10, "You must select "+gameVariables.playerTurn+"'s counter", Color.black);
                 }else if(blueCounter1.isClicked(gc)){
                     gameVariables.counterSelected = blueCounter1;
@@ -214,18 +218,19 @@ public class InGame2 extends BasicGameState {
                     System.out.println(gameVariables.counterSelected.getID());
                 }
             }
-        }else{
+        }else if(gameVariables.diceRolled == false){
             if(redCounter1.isClicked(gc)){
-                drawInfo();
+                //drawIB(gc.getGraphics());
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(redCounter2.isClicked(gc)){
-                drawInfo();
+                //drawIB(gc.getGraphics());
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
+                //System.out.println("You must roll the dice first.");
             }else if(blueCounter1.isClicked(gc)){
-                drawInfo();
+                //drawIB(gc.getGraphics());
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }else if(blueCounter2.isClicked(gc)){
-                drawInfo();
+                //drawIB(gc.getGraphics());
                 font2.drawString(240, 10, "You must roll the dice first.", Color.black);
             }
         }
@@ -233,33 +238,69 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.isCounterSelected == true){
             if(gameVariables.counterSelected == redCounter1){
                 if(gameVariables.isLegalMove1(redCounter1)){
-                    redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                    redCounter1.moveTo(redCounter1.getBoxIn());
-                    redCounter1.getBoxIn().setOccupied(true, redCounter1.getID());
+                    if(gameVariables.diceLandedNum == 4){
+                        redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() - 1));
+                        redCounter1.moveTo(redCounter1.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.getBoxIn().setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
+                    }else{
+                        redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        redCounter1.moveTo(redCounter1.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.getBoxIn().setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p2";
+                }else{
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p2";
                 }
             }else if(gameVariables.counterSelected == redCounter2){
                 if(gameVariables.isLegalMove1(redCounter2)){
-                    redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
-                    redCounter2.moveTo(redCounter2.getBoxIn());
-                    redCounter2.getBoxIn().setOccupied(true, redCounter2.getID());
+                    if(gameVariables.diceLandedNum == 4){
+                        redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        redCounter2.moveTo(redCounter2.getBoxIn());
+                    }else{
+                        redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        redCounter2.moveTo(redCounter2.getBoxIn());
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p2";
+                }else{
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p2";
                 }
             }else if(gameVariables.counterSelected == blueCounter1){
                 if(gameVariables.isLegalMove2(blueCounter1)){
-                    blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                    blueCounter1.moveTo(blueCounter1.getBoxIn());
-                    blueCounter1.getBoxIn().setOccupied(true, blueCounter1.getID());
+                    if(gameVariables.diceLandedNum == 4){
+                        blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter1.moveTo(blueCounter1.getBoxIn());
+                    }else{
+                        blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter1.moveTo(blueCounter1.getBoxIn());
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p1";
+                }else{
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p1";
                 }
             }else if(gameVariables.counterSelected == blueCounter2){
                 if(gameVariables.isLegalMove2(blueCounter2)){
-                    blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
-                    blueCounter2.moveTo(blueCounter2.getBoxIn());
-                    blueCounter2.getBoxIn().setOccupied(true, blueCounter2.getID());
+                    if(gameVariables.diceLandedNum == 4){
+                        blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter2.moveTo(blueCounter2.getBoxIn());
+                    }else{
+                        blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter2.moveTo(blueCounter2.getBoxIn());
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p1";
+                }else{
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p1";
                 }
@@ -383,10 +424,18 @@ public class InGame2 extends BasicGameState {
                 }
             }
     }
-    
-    public void drawInfo(){
+
+    public void drawIB(Graphics g){
         ibOverlay.draw(100, 6);
+        sbOverlay2.draw(100, 44);
         g.drawRect(100, 6, 500, 38);
+        box11.draw(g);
+        g.drawRect(300, 44, 100, 748);
+        font1.drawString(310, 45, "11 - Finish", Color.black);
+        redCounter1.draw(g);
+        redCounter2.draw(g);
+        blueCounter1.draw(g);
+        blueCounter2.draw(g);
     }
 
     private static class Button extends AbstractButton {
