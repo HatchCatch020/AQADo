@@ -242,14 +242,14 @@ public class InGame2 extends BasicGameState {
                         redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() - 1));
                         redCounter1.moveTo(redCounter1.getBoxIn());
                         if(gameVariables.isOccupiedByCounter == true){
-                            gameVariables.getCounterOccupiedBy.getBoxIn().setY(box1.getY() - 10);
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
                             gameVariables.isOccupiedByCounter = false;
                         }
                     }else{
                         redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
                         redCounter1.moveTo(redCounter1.getBoxIn());
                         if(gameVariables.isOccupiedByCounter == true){
-                            gameVariables.getCounterOccupiedBy.getBoxIn().setY(box1.getY() - 10);
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
                             gameVariables.isOccupiedByCounter = false;
                         }
                     }
@@ -262,11 +262,19 @@ public class InGame2 extends BasicGameState {
             }else if(gameVariables.counterSelected == redCounter2){
                 if(gameVariables.isLegalMove1(redCounter2)){
                     if(gameVariables.diceLandedNum == 4){
-                        redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() - 1 ));
                         redCounter2.moveTo(redCounter2.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }else{
                         redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
                         redCounter2.moveTo(redCounter2.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p2";
@@ -277,11 +285,19 @@ public class InGame2 extends BasicGameState {
             }else if(gameVariables.counterSelected == blueCounter1){
                 if(gameVariables.isLegalMove2(blueCounter1)){
                     if(gameVariables.diceLandedNum == 4){
-                        blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
                         blueCounter1.moveTo(blueCounter1.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }else{
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
                         blueCounter1.moveTo(blueCounter1.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p1";
@@ -292,11 +308,19 @@ public class InGame2 extends BasicGameState {
             }else if(gameVariables.counterSelected == blueCounter2){
                 if(gameVariables.isLegalMove2(blueCounter2)){
                     if(gameVariables.diceLandedNum == 4){
-                        blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() - 1));
                         blueCounter2.moveTo(blueCounter2.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }else{
                         blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
                         blueCounter2.moveTo(blueCounter2.getBoxIn());
+                        if(gameVariables.isOccupiedByCounter == true){
+                            gameVariables.getCounterOccupiedBy.setY(box1.getY() - 10);
+                            gameVariables.isOccupiedByCounter = false;
+                        }
                     }
                     gameVariables.moveMade = true;
                     gameVariables.playerTurn = "p1";
