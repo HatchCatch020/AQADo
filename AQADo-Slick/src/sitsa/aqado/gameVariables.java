@@ -48,12 +48,24 @@ public class gameVariables {
         return (AbstractCounterComponent) counters.get(new Integer(id));
     }
 
-    public static boolean isLegalMove1(AbstractCounterComponent counter){
+    public static boolean LegalMove1(AbstractCounterComponent counter){
+        if(nextBox(counter.getBoxIn()).isSafeSpace()){
+            return true;
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4){
+            isOccupiedByCounter = true;
+            getCounterOccupiedBy = getCounterByID((int) nextBox(counter.getBoxIn()).getOccupiedBy());
+            return true;
+        }else{
+            return true;
+        }
+    }
+
+    public static boolean isLegalMove2(AbstractCounterComponent counter){
         if(nextBox(counter.getBoxIn()).isSafeSpace() || nextBox(counter.getBoxIn()).isOccupied() == false){
             return true;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2 || counter.getBoxIn().getID() == 11){
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4 || counter.getBoxIn().getID() == 11){
             return false;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4){
+        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2){
             isOccupiedByCounter = true;
             getCounterOccupiedBy = getCounterByID((int) nextBox(counter.getBoxIn()).getOccupiedBy());
             return true;
@@ -62,25 +74,15 @@ public class gameVariables {
         }
     }
 
-    public static boolean isLegalMove2(AbstractCounterComponent counter){
-        if(nextBox(counter.getBoxIn()).isSafeSpace() || nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 3){
-            System.out.println("Legal Move.");
-            return true;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2 || counter.getBoxIn().getID() == 11){
-            System.out.println("Next box was occupied by counter "+nextBox(counter.getBoxIn()).getOccupiedBy());
-            return false;
-        }else if(nextBox(counter.getBoxIn()).isOccupied() == false){
-            System.out.println("next box was empty.");
-            return true;
-        }else{
-            System.out.println("N/A");
-            return false;
-        }
-    }
-
     public static AbstractBoxComponent nextBox(AbstractBoxComponent after){
         int i = (int) after.getID() + diceLandedNum;
         AbstractBoxComponent nextBox = gameVariables.getBoxID(i);
         return nextBox;
+    }
+
+    public static AbstractBoxComponent lastBox(AbstractBoxComponent before){
+        int i = (int) before.getID() - 1;
+        AbstractBoxComponent lastBox = gameVariables.getBoxID(i);
+        return lastBox;
     }
 }

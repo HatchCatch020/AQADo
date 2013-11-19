@@ -28,6 +28,7 @@ public abstract class AbstractCounterComponent implements counterComponent {
         this.id = id;
         this.texture = texture;
         this.boxIn = boxIn;
+        this.setBoxIn(boxIn);
         gameVariables.addCounter(this);
     }
 
@@ -35,6 +36,93 @@ public abstract class AbstractCounterComponent implements counterComponent {
     public void update(int delta){
         this.x += delta * dx;
         this.y += delta * dy;
+        /*if(gameVariables.isCounterSelected){
+            if(gameVariables.playerTurn == "p1") {
+                if(gameVariables.counterSelected == this){
+                    if(gameVariables.nextBox(this.getBoxIn()).isSafeSpace()){
+                        if(gameVariables.diceLandedNum != 4) {
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && this.getBoxIn().getID() != 1){
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Moved back to a safe space and was equal to 4.");
+                        }
+                    }else if(gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 2){
+                            System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                    }else if(gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 3 || gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 4){
+                        if(gameVariables.diceLandedNum != 4) {
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setY(gameVariables.getBoxID(1).getY() + 8);
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setBoxIn(gameVariables.getBoxID(1));
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move forward and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                        }else if(gameVariables.diceLandedNum == 4 && this.getBoxIn().getID() != 1){
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setY(gameVariables.getBoxID(1).getY() + 8);
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setBoxIn(gameVariables.getBoxID(1));
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move back and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                        }
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Space was unoccupied space. Moved forward.");
+                        }else{
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                                System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Space was unoccupied space. Moved backward.");
+                        }
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p2";
+                }
+            }else if(gameVariables.playerTurn == "p2"){
+                if(gameVariables.counterSelected == this){
+                    if(gameVariables.nextBox(this.getBoxIn()).isSafeSpace()){
+                        if(gameVariables.diceLandedNum != 4) {
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && this.getBoxIn().getID() != 1){
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Moved back to a safe space and was equal to 4.");
+                        }
+                    }else if(gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 4){
+                    System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                    }else if(gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 1 || gameVariables.nextBox(this.getBoxIn()).getOccupiedBy() == 2){
+                        if(gameVariables.diceLandedNum != 4) {
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setY(gameVariables.getBoxID(1).getY() + 8);
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setBoxIn(gameVariables.getBoxID(1));
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move forward and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                        }else if(gameVariables.diceLandedNum == 4 && this.getBoxIn().getID() != 1){
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setY(gameVariables.getBoxID(1).getY() + 8);
+                            gameVariables.getCounterByID((int) gameVariables.nextBox(this.getBoxIn()).getOccupiedBy()).setBoxIn(gameVariables.getBoxID(1));
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move back and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(this.getBoxIn()).getOccupiedBy());
+                        }
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Space was unoccupied space. Moved forward.");
+                        }else{
+                            this.setBoxIn(gameVariables.getBoxID((int) this.getBoxIn().getID() - 1));
+                            this.moveTo(this.getBoxIn());
+                        System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Space was unoccupied space. Moved backward.");
+                        }
+                    }
+                    gameVariables.moveMade = true;
+                    gameVariables.playerTurn = "p1";
+                }
+            }
+        }*/
     }
 
     @Override
@@ -75,18 +163,16 @@ public abstract class AbstractCounterComponent implements counterComponent {
     @Override
     public void setBoxIn(AbstractBoxComponent boxIn) {
         this.boxIn = boxIn;
-        boxIn.setOccupied(true, this.getID());
+        if(!boxIn.isSafeSpace()){
+            boxIn.setOccupied(true, this.getID());
+        }
+        this.y = boxIn.getY() + 10;
+
     }
 
     @Override
     public void setTexture(Image texture) {
         this.texture = texture;
-    }
-
-    @Override
-    public void moveTo(AbstractBoxComponent box) {
-            this.y = box.getY() + 10;
-            this.box = box;
     }
 
     @Override

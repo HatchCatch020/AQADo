@@ -26,7 +26,6 @@ public interface counterComponent {
     public void setID(float id);
     public void setBoxIn(AbstractBoxComponent boxIn);
     public void setTexture(Image texture);
-    public void moveTo(AbstractBoxComponent box);
     public boolean isClicked(GameContainer gc);
     public float getX();
     public float getY();

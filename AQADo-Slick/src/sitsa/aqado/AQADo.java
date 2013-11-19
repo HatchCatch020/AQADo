@@ -42,6 +42,7 @@ public class AQADo extends StateBasedGame {
 			appgc.setDisplayMode(700,  800, false);
 			appgc.setShowFPS(false);
 			appgc.start();
+            Logger.getLogger(AQADo.class.getName()).log(Level.INFO, "Computer Science : AQADo - Connor Monaghan");
 		}catch(SlickException ex){
 			Logger.getLogger(AQADo.class.getName()).log(Level.SEVERE, null, ex);
 		}
