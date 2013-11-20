@@ -150,7 +150,7 @@ public class InGame2 extends BasicGameState {
         g.fillRect(610, 100, 80, 50);
         font.drawString(620, 75, "Rolled", Color.black);
         if(gameVariables.isCounterSelected){
-            drawIB(gc.getGraphics());
+            //drawIB(gc.getGraphics());
         }
 
 
