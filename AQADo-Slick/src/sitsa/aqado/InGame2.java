@@ -76,14 +76,14 @@ public class InGame2 extends BasicGameState {
         blueCounter1 = new CounterComponent(430, 730, 51, 51, 3, blueCounterTex, box1);
         blueCounter2 = new CounterComponent(518, 730, 51, 51, 4, blueCounterTex, box1);
         // Load buttons
-            //Pause menu
-            pauseButton = new Button(665, 0, 29, 31, Color.transparent);
-            pauseBut = new Image("tex/pause.png");
-            pauseOverlay = new Image("tex/overlay.png");
-            resumeButton = new pMenuButton(245, 290, 200, 60, Color.cyan.darker());
-            restartButton = new pMenuButton(245, 360, 200, 60, Color.cyan.darker());
-            optionsButton = new pMenuButton(245, 430, 200, 60, Color.cyan.darker());
-            quitToTitleButton = new pMenuButton(245, 500, 200, 60, Color.cyan.darker());
+        //Pause menu
+        pauseButton = new Button(665, 0, 29, 31, Color.transparent);
+        pauseBut = new Image("tex/pause.png");
+        pauseOverlay = new Image("tex/overlay.png");
+        resumeButton = new pMenuButton(245, 290, 200, 60, Color.cyan.darker());
+        restartButton = new pMenuButton(245, 360, 200, 60, Color.cyan.darker());
+        optionsButton = new pMenuButton(245, 430, 200, 60, Color.cyan.darker());
+        quitToTitleButton = new pMenuButton(245, 500, 200, 60, Color.cyan.darker());
         // Initialize font
         awtFont = new Font("Arial", Font.BOLD, 20);
         font = new TrueTypeFont(awtFont, false);
@@ -201,20 +201,30 @@ public class InGame2 extends BasicGameState {
         // Render logic
 
         //Pause menu
-            pauseBut.draw(670, 5);
-            pauseButton.draw(g);
-            if(PAUSED){
-                pauseOverlay.draw(0, 0);
-                resumeButton.draw(g);
-                restartButton.draw(g);
-                optionsButton.draw(g);
-                quitToTitleButton.draw(g);
-                g.drawString("Resume", 315, 310);
-                g.drawString("Restart", 315, 380);
-                g.drawString("Options", 315, 450);
-                g.drawString("Quit to title", 290, 520);
+        pauseBut.draw(670, 5);
+        pauseButton.draw(g);
+        if(PAUSED){
+            pauseOverlay.draw(0, 0);
+            resumeButton.draw(g);
+            restartButton.draw(g);
+            optionsButton.draw(g);
+            quitToTitleButton.draw(g);
+            g.drawString("Resume", 315, 310);
+            g.drawString("Restart", 315, 380);
+            g.drawString("Options", 315, 450);
+            g.drawString("Quit to title", 290, 520);
+        }
+
+        //Winning screen
+        if(gameVariables.hasPlayerWon){
+            if(gameVariables.playerWon == "p1"){
+                
+            }else if(gameVariables.playerWon == "p2"){
+
             }
+        }
     }
+
 
     @Override
     public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -223,7 +233,7 @@ public class InGame2 extends BasicGameState {
         this.delta = delta;
 
         // Core game logic
-            //TODO core game logic
+        //TODO core game logic
         if(gameVariables.diceRolled && !gameVariables.isCounterSelected){
             if(gameVariables.playerTurn.equals("p1")){
                 if(redCounter1.isClicked(gc)){
@@ -249,16 +259,23 @@ public class InGame2 extends BasicGameState {
         if(gameVariables.isCounterSelected){
             if(gameVariables.counterSelected == redCounter1){
                 if(gameVariables.nextBox(redCounter1.getBoxIn()).isSafeSpace()){
-                    if(gameVariables.diceLandedNum != 4) {
+                    if(gameVariables.nextBox(redCounter1.getBoxIn()).getID() == 11 && gameVariables.nextBox(redCounter1.getBoxIn()).getOccupiedBy() == 2){
                         redCounter1.getBoxIn().setOccupied(false, 0);
                         redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() != 1){
-                        redCounter1.getBoxIn().setOccupied(false, 0);
-                        redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() == 1){
-                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        gameVariables.playerWon = "p1";
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 1 won.");
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            redCounter1.getBoxIn().setOccupied(false, 0);
+                            redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() != 1){
+                            redCounter1.getBoxIn().setOccupied(false, 0);
+                            redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() - 1));
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() == 1){
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        }
                     }
                 }else if(gameVariables.nextBox(redCounter1.getBoxIn()).getOccupiedBy() == 2 && !gameVariables.nextBox(redCounter1.getBoxIn()).isSafeSpace()){
                     /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(redCounter1.getBoxIn()).getOccupiedBy());
@@ -293,16 +310,23 @@ public class InGame2 extends BasicGameState {
                 gameVariables.playerTurn = "p2";
             }else if(gameVariables.counterSelected == redCounter2){
                 if(gameVariables.nextBox(redCounter2.getBoxIn()).isSafeSpace()){
-                    if(gameVariables.diceLandedNum != 4) {
+                    if(gameVariables.nextBox(redCounter2.getBoxIn()).getID() == 11 && gameVariables.nextBox(redCounter2.getBoxIn()).getOccupiedBy() == 1){
                         redCounter2.getBoxIn().setOccupied(false, 0);
                         redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && redCounter2.getBoxIn().getID() != 1){
-                        redCounter2.getBoxIn().setOccupied(false, 0);
-                        redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && redCounter2.getBoxIn().getID() == 1){
-                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        gameVariables.playerWon = "p1";
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 1 won.");
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            redCounter2.getBoxIn().setOccupied(false, 0);
+                            redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && redCounter2.getBoxIn().getID() != 1){
+                            redCounter2.getBoxIn().setOccupied(false, 0);
+                            redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() - 1));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && redCounter2.getBoxIn().getID() == 1){
+                                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        }
                     }
                 }else if(gameVariables.nextBox(redCounter2.getBoxIn()).getOccupiedBy() == 1 && !gameVariables.nextBox(redCounter2.getBoxIn()).isSafeSpace()){
                     /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(redCounter2.getBoxIn()).getOccupiedBy());
@@ -321,7 +345,7 @@ public class InGame2 extends BasicGameState {
                         /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move back and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(redCounter2.getBoxIn()).getOccupiedBy());
                     }
                 }else if(!gameVariables.nextBox(redCounter2.getBoxIn()).isOccupied()){
-                        if(gameVariables.diceLandedNum != 4) {
+                    if(gameVariables.diceLandedNum != 4) {
                         redCounter2.getBoxIn().setOccupied(false, 0);
                         redCounter2.setBoxIn(gameVariables.getBoxID((int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
                         /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Space was unoccupied space. Moved forward.");
@@ -337,16 +361,23 @@ public class InGame2 extends BasicGameState {
                 gameVariables.playerTurn = "p2";
             }else if(gameVariables.counterSelected == blueCounter1){
                 if(gameVariables.nextBox(blueCounter1.getBoxIn()).isSafeSpace()){
-                    if(gameVariables.diceLandedNum != 4) {
+                    if(gameVariables.nextBox(blueCounter1.getBoxIn()).getID() == 11 && gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy() == 4){
                         blueCounter1.getBoxIn().setOccupied(false, 0);
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() != 1){
-                        blueCounter1.getBoxIn().setOccupied(false, 0);
-                        blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() == 1){
-                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        gameVariables.playerWon = "p2";
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 2 won.");
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            blueCounter1.getBoxIn().setOccupied(false, 0);
+                            blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() != 1){
+                            blueCounter1.getBoxIn().setOccupied(false, 0);
+                            blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() == 1){
+                                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        }
                     }
                 }else if(gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy() == 4 && !gameVariables.nextBox(blueCounter1.getBoxIn()).isSafeSpace()){
                     /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy());
@@ -381,16 +412,23 @@ public class InGame2 extends BasicGameState {
                 gameVariables.playerTurn = "p1";
             }else if(gameVariables.counterSelected == blueCounter2){
                 if(gameVariables.nextBox(blueCounter2.getBoxIn()).isSafeSpace()){
-                    if(gameVariables.diceLandedNum != 4) {
+                    if(gameVariables.nextBox(blueCounter2.getBoxIn()).getID() == 11 && gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy() == 3){
                         blueCounter2.getBoxIn().setOccupied(false, 0);
                         blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() != 1){
-                        blueCounter2.getBoxIn().setOccupied(false, 0);
-                        blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
-                    }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() == 1){
-                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        gameVariables.playerWon = "p2";
+                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 2 won.");
+                    }else{
+                        if(gameVariables.diceLandedNum != 4) {
+                            blueCounter2.getBoxIn().setOccupied(false, 0);
+                            blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() != 1){
+                            blueCounter2.getBoxIn().setOccupied(false, 0);
+                            blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() - 1));
+                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                        }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() == 1){
+                               /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                        }
                     }
                 }else if(gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy() == 3 && !gameVariables.nextBox(blueCounter2.getBoxIn()).isSafeSpace()){
                     /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy());
@@ -462,7 +500,7 @@ public class InGame2 extends BasicGameState {
 
 
         // Dice logic
-            //TODO dice logic
+        //TODO dice logic
         if(!gameVariables.diceRolled){
             if(rollButton.isMouseOn(gc)){
                 rollButton.setFillColor(Color.green.darker().darker());
@@ -493,7 +531,7 @@ public class InGame2 extends BasicGameState {
 
 
         // Counter logic
-            //TODO dynamic counter movement
+        //TODO dynamic counter movement
         /*AbstractBoxComponent i = gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + 1);
 
         if(redCounter1.isClicked(gc)){
@@ -523,52 +561,52 @@ public class InGame2 extends BasicGameState {
         blueCounter1.update(delta);
         blueCounter2.update(delta);
 
-            //Pause menu
-            if(pauseButton.isMouseClicked(gc)){
-                PAUSED = true;
+        //Pause menu
+        if(pauseButton.isMouseClicked(gc)){
+            PAUSED = true;
+        }
+        if(PAUSED){
+            if(resumeButton.isMouseOn(gc)){
+                resumeButton.setFillColor(Color.cyan.brighter());
+            }else{
+                resumeButton.setFillColor(Color.cyan.darker());
             }
-            if(PAUSED){
-                if(resumeButton.isMouseOn(gc)){
-                    resumeButton.setFillColor(Color.cyan.brighter());
-                }else{
-                    resumeButton.setFillColor(Color.cyan.darker());
-                }
-                if(restartButton.isMouseOn(gc)){
-                    restartButton.setFillColor(Color.cyan.brighter());
-                }else{
-                    restartButton.setFillColor(Color.cyan.darker());
-                }
-                if(optionsButton.isMouseOn(gc)){
-                    optionsButton.setFillColor(Color.cyan.brighter());
-                }else{
-                    optionsButton.setFillColor(Color.cyan.darker());
-                }
-                if(quitToTitleButton.isMouseOn(gc)){
-                    quitToTitleButton.setFillColor(Color.cyan.brighter());
-                }else{
-                    quitToTitleButton.setFillColor(Color.cyan.darker());
-                }
-                if(resumeButton.isMouseClicked(gc)){
-                    PAUSED = false;
-                }
-                if(restartButton.isMouseClicked(gc)){
-                    // TODO fix bug making line width thinner
-                    gc.reinit();
-                    PAUSED = false;
-                    gameVariables.diceRolled = false;
-                    gameVariables.moveMade = false;
-                    gameVariables.diceLandedNum = 0;
-                    game.enterState(5);
-                }
-                if(optionsButton.isMouseClicked(gc)){
-                    game.enterState(2);
-                    gameVariables.fromPause = true;
-                }
-                if(quitToTitleButton.isMouseClicked(gc)){
-                    game.enterState(1);
-                    PAUSED = false;
-                }
+            if(restartButton.isMouseOn(gc)){
+                restartButton.setFillColor(Color.cyan.brighter());
+            }else{
+                restartButton.setFillColor(Color.cyan.darker());
             }
+            if(optionsButton.isMouseOn(gc)){
+                optionsButton.setFillColor(Color.cyan.brighter());
+            }else{
+                optionsButton.setFillColor(Color.cyan.darker());
+            }
+            if(quitToTitleButton.isMouseOn(gc)){
+                quitToTitleButton.setFillColor(Color.cyan.brighter());
+            }else{
+                quitToTitleButton.setFillColor(Color.cyan.darker());
+            }
+            if(resumeButton.isMouseClicked(gc)){
+                PAUSED = false;
+            }
+            if(restartButton.isMouseClicked(gc)){
+                // TODO fix bug making line width thinner
+                gc.reinit();
+                PAUSED = false;
+                gameVariables.diceRolled = false;
+                gameVariables.moveMade = false;
+                gameVariables.diceLandedNum = 0;
+                game.enterState(5);
+            }
+            if(optionsButton.isMouseClicked(gc)){
+                game.enterState(2);
+                gameVariables.fromPause = true;
+            }
+            if(quitToTitleButton.isMouseClicked(gc)){
+                game.enterState(1);
+                PAUSED = false;
+            }
+        }
     }
 
     public void drawIB(Graphics g){

@@ -18,6 +18,8 @@ public class gameVariables {
     public static String p2Name;
     public static boolean fromPause = false;
     public static String playerTurn = "p1";
+    public static boolean hasPlayerWon = false;
+    public static String playerWon = null;
     public static boolean isOccupiedByCounter;
     public static AbstractCounterComponent getCounterOccupiedBy;
 
