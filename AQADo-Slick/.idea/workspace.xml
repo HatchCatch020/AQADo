@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list id="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" name="Default" comment="" />
-    <list default="true" id="d639ea86-b2fd-4e97-9415-681a5d0c6764" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sitsa/aqado/InGame2.java" afterPath="$PROJECT_DIR$/src/sitsa/aqado/InGame2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java" afterPath="$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java" />
-    </list>
+    <list default="true" id="d639ea86-b2fd-4e97-9415-681a5d0c6764" name="New changelist" comment="" />
     <ignored path="AQADo-Slick.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AQADo.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384631742639" ignored="false" />
@@ -31,9 +28,9 @@
     <file path="/playerNames.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381573121666" ignored="false" />
     <file path="/a.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381669709557" ignored="false" />
     <file path="/sample.java" changelist="5c6cf33f-ad48-4121-ab7d-bba9b8953b83" time="1381669709043" ignored="false" />
-    <file path="/gameVariables.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384706193909" ignored="false" />
+    <file path="/gameVariables.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1385582699840" ignored="false" />
     <file path="/Box.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1381774716061" ignored="false" />
-    <file path="/InGame2.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1385581531122" ignored="false" />
+    <file path="/InGame2.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1385582942291" ignored="false" />
     <file path="/boxComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383769567361" ignored="false" />
     <file path="/AbstractBoxComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1384291369946" ignored="false" />
     <file path="/counterComponent.java" changelist="d639ea86-b2fd-4e97-9415-681a5d0c6764" time="1383760793919" ignored="false" />
@@ -107,7 +104,7 @@
       <file leaf-file-name="InGame2.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="220" column="16" selection-start="9220" selection-end="9220" vertical-scroll-proportion="0.29303548">
+            <state line="483" column="47" selection-start="37728" selection-end="37728" vertical-scroll-proportion="9.768249">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,10 +112,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AQADo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/AQADo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="112" selection-start="1543" selection-end="1543" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="gameVariables.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="1" selection-start="3301" selection-end="3301" vertical-scroll-proportion="0.0">
+            <state line="84" column="74" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -612,16 +618,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20698254" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793018" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15781923" sideWeight="0.7331671" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.71321696" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17503586" sideWeight="0.7311522" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26602176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17503586" sideWeight="0.734414" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26558605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32859176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793018" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990025" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -746,13 +752,6 @@
         <state line="13" column="9" selection-start="604" selection-end="604" vertical-scroll-proportion="0.31578946" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/AQADo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="112" selection-start="1543" selection-end="1543" vertical-scroll-proportion="0.8634868">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/GUI/AbstractBoxComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="0" selection-start="1206" selection-end="1243" vertical-scroll-proportion="0.0">
@@ -774,14 +773,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/gameVariables.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="1" selection-start="3301" selection-end="3301" vertical-scroll-proportion="0.0">
+        <state line="84" column="74" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/AQADo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="112" selection-start="1543" selection-end="1543" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sitsa/aqado/InGame2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="16" selection-start="9220" selection-end="9220" vertical-scroll-proportion="0.29303548">
+        <state line="483" column="47" selection-start="37728" selection-end="37728" vertical-scroll-proportion="9.768249">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -25,7 +25,7 @@ public class InGame2 extends BasicGameState {
     public boxComponent box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11;
     private int state;
     private boolean PAUSED = false;
-    private Image bg, pauseBut, pauseOverlay, redCounterTex, blueCounterTex, sbOverlay, sbOverlay1, sbOverlay2, ibOverlay;
+    private Image bg, pauseBut, pauseOverlay, redCounterTex, blueCounterTex, sbOverlay, sbOverlay1, sbOverlay2, ibOverlay, p1WinOverlay;
     private Button pauseButton;
     private pMenuButton quitToTitleButton, resumeButton, optionsButton, restartButton, rollButton;
     private TrueTypeFont font, font1, font2;
@@ -55,6 +55,7 @@ public class InGame2 extends BasicGameState {
         ibOverlay = new Image("tex/infoBoxOverlay-01.png");
         redCounterTex = new Image("tex/redCounter.png");
         blueCounterTex = new Image("tex/blueCounter.png");
+        p1WinOverlay = new Image("tex/red.png");
         // Load boxes
         box11 = new boxComponent(100, 44, 500, 68, 11, Color.white);
         box10 = new boxComponent(100, 112, 500, 68, 10, Color.black);
@@ -218,7 +219,7 @@ public class InGame2 extends BasicGameState {
         //Winning screen
         if(gameVariables.hasPlayerWon){
             if(gameVariables.playerWon == "p1"){
-                
+                p1WinOverlay.draw(0, 0);
             }else if(gameVariables.playerWon == "p2"){
 
             }
@@ -474,11 +475,14 @@ public class InGame2 extends BasicGameState {
         }
 
         if(Keyboard.isKeyDown(Keyboard.KEY_1)){
-            System.out.println("Box1    Occupied by : "+box1.getOccupiedBy());
+            gameVariables.hasPlayerWon = true;
+            gameVariables.playerWon = "p1";
         }else if(Keyboard.isKeyDown(Keyboard.KEY_2)){
-            System.out.println("Box2    Occupied by : "+box2.getOccupiedBy());
+            gameVariables.hasPlayerWon = true;
+            gameVariables.playerWon = "p2";
         }else if(Keyboard.isKeyDown(Keyboard.KEY_3)){
-            System.out.println("Box3    Occupied by : "+box3.getOccupiedBy());
+            gameVariables.hasPlayerWon = false;
+            gameVariables.playerWon = null;
         }else if(Keyboard.isKeyDown(Keyboard.KEY_4)){
             System.out.println("Box4    Occupied by : "+box4.getOccupiedBy());
         }else if(Keyboard.isKeyDown(Keyboard.KEY_5)){
