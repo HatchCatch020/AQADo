@@ -383,39 +383,39 @@ public class InGame2 extends BasicGameState {
                         }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() != 1){
                             blueCounter1.getBoxIn().setOccupied(false, 0);
                             blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
-                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                                /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.";
                         }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() == 1){
-                                       /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                                       /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1";
                         }
                     }
                 }else if(gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy() == 4 && !gameVariables.nextBox(blueCounter1.getBoxIn()).isSafeSpace()){
-                    /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy());
+                    /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy();
                 }else if(gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy() == 1 || gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy() == 2 && !gameVariables.nextBox(blueCounter1.getBoxIn()).isSafeSpace()){
                     if(gameVariables.diceLandedNum != 4) {
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy()).setBoxIn(box1);
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy()).getBoxIn().setOccupied(true, blueCounter1.getID());
                         blueCounter1.getBoxIn().setOccupied(false, 0);
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move forward and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy());
+                        /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move forward and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy();
                     }else if(gameVariables.diceLandedNum == 4 && blueCounter1.getBoxIn().getID() != 1){
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy()).setBoxIn(box1);
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy()).getBoxIn().setOccupied(true, blueCounter1.getID());
                         blueCounter1.getBoxIn().setOccupied(false, 0);
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move back and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy());
+                        /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move back and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(blueCounter1.getBoxIn()).getOccupiedBy();
                     }
                 }else if(!gameVariables.nextBox(blueCounter1.getBoxIn()).isOccupied()){
                     if(gameVariables.diceLandedNum != 4) {
                         blueCounter1.getBoxIn().setOccupied(false, 0);
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Space was unoccupied space. Moved forward.");
+                        /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Space was unoccupied space. Moved forward.";
                     }else{
                         blueCounter1.getBoxIn().setOccupied(false, 0);
                         blueCounter1.setBoxIn(gameVariables.getBoxID((int) blueCounter1.getBoxIn().getID() - 1));
-                        /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Space was unoccupied space. Moved backward.");
+                        /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Space was unoccupied space. Moved backward.";
                     }
                 }else{
-                    /*log*/System.out.println("Something odd is happening this shouldn't of happened. if it was occupied code should of ran if statement from above.");
+                    /*log*/logString = "Something odd is happening this shouldn't of happened. if it was occupied code should of ran if statement from above.";
                 }
                 gameVariables.moveMade = true;
                 gameVariables.playerTurn = "p1";
@@ -425,28 +425,29 @@ public class InGame2 extends BasicGameState {
                         blueCounter2.getBoxIn().setOccupied(false, 0);
                         blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
                         gameVariables.playerWon = "p2";
-                            /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 2 won.");
+                            /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 2 won.";
                     }else{
                         if(gameVariables.diceLandedNum != 4) {
                             blueCounter2.getBoxIn().setOccupied(false, 0);
                             blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
-                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.");
+                                /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved to a safe space and did not equal 4.";
                         }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() != 1){
                             blueCounter2.getBoxIn().setOccupied(false, 0);
                             blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() - 1));
-                                /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.");
+                                /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.";
                         }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() == 1){
-                               /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1");
+                               /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1";
                         }
                     }
                 }else if(gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy() == 3 && !gameVariables.nextBox(blueCounter2.getBoxIn()).isSafeSpace()){
-                    /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy());
+                    /*log*/logStrin = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move, was occupied by player's counter.   Occupied by : "+gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy();
                 }else if(gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy() == 1 || gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy() == 2 && !gameVariables.nextBox(blueCounter2.getBoxIn()).isSafeSpace()){
                     if(gameVariables.diceLandedNum != 4) {
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy()).setBoxIn(box1);
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy()).getBoxIn().setOccupied(true, blueCounter2.getID());
                         blueCounter2.getBoxIn().setOccupied(false, 0);
                         blueCounter2.setBoxIn(gameVariables.getBoxID((int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum));
+                        //TODO
                         /*log*/System.out.println("Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Was occupied by opponent's counter, move forward and move opponent's piece to start.   Occupied by : "+gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy());
                     }else if(gameVariables.diceLandedNum == 4 && blueCounter2.getBoxIn().getID() != 1){
                         gameVariables.getCounterByID((int) gameVariables.nextBox(blueCounter2.getBoxIn()).getOccupiedBy()).setBoxIn(box1);
