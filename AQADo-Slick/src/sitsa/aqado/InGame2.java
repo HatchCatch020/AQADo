@@ -240,6 +240,7 @@ public class InGame2 extends BasicGameState {
         //TODO core game logic
         if(gameVariables.diceRolled && !gameVariables.isCounterSelected){
             /*log*/font2.drawString(260, 10, "Select a counter.", Color.black);
+            logString = "Select a counter.";
             if(gameVariables.playerTurn.equals("p1")){
                 if(redCounter1.isClicked(gc)){
                     gameVariables.counterSelected = redCounter1;
