@@ -30,12 +30,12 @@ public class NameInput extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		bg = new Image("tex/bg300x400.png");
-        returnButton = new Button(245, 300, 200, 60, Color.cyan);
-        Font awtFont = new java.awt.Font("Arial", java.awt.Font.BOLD, 16);
-        font = new TrueTypeFont(awtFont, false);
-        p1Input = new TextField(container, font, 30, 500, 300, 50);
-        p2Input = new TextField(container, font, 360, 500, 300, 50);
-        font.loadGlyphs();
+        	returnButton = new Button(245, 300, 200, 60, Color.cyan);
+ 		Font awtFont = new java.awt.Font("Arial", java.awt.Font.BOLD, 16);
+        	font = new TrueTypeFont(awtFont, false);
+		p1Input = new TextField(container, font, 30, 500, 300, 50);
+        	p2Input = new TextField(container, font, 360, 500, 300, 50);
+        	font.loadGlyphs();
 
     }
 
