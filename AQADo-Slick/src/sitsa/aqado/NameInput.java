@@ -48,6 +48,8 @@ public class NameInput extends BasicGameState {
         font.drawString(360, 480, "Player 2:", Color.black);
         p1Input.render(gc, g);
         p2Input.render(gc, g);
+        p1Input.setText("Player one");
+        p2Input.setText("Player two");
     }
 
 	@Override
