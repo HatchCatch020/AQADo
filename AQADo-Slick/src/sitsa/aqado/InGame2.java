@@ -250,7 +250,7 @@ public class InGame2 extends BasicGameState {
                     gameVariables.counterSelected = redCounter2;
                     gameVariables.isCounterSelected = true;
                 }else if(blueCounter1.isClicked(gc) || blueCounter2.isClicked(gc)){
-                    cmdLog(1, gc);
+                    logString1 = "Select "+
                 }
             }
             if(gameVariables.playerTurn.equals("p2")){
@@ -266,7 +266,17 @@ public class InGame2 extends BasicGameState {
             }
         }else if(!gameVariables.diceRolled){
         }
-
+        if(gameVariables.isCounterSelected){
+            if(gameVariables.counterSelected == redCounter1){
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
         if(gameVariables.isCounterSelected){
             if(gameVariables.counterSelected == redCounter1){
                 if(gameVariables.nextBox(redCounter1.getBoxIn()).isSafeSpace()){
