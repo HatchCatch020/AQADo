@@ -35,7 +35,7 @@ public class InGame2 extends BasicGameState {
     private StateBasedGame game;
     private int delta;
     private gameVariables gv;
-    private String logString = "";
+    private String logString, logString1 = "";
 
     public InGame2(int state){
         this.state = state;
@@ -104,11 +104,12 @@ public class InGame2 extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         bg.draw(-600,-800);
         // Render boxes
-        /*log*/font2.drawString(x, y, logString, Color.black);
         ibOverlay.draw(100, 6);
         sbOverlay.draw(100, 452);
         sbOverlay1.draw(100, 724);
         sbOverlay2.draw(100, 44);
+        System.out.println(logString);
+        font2.drawString(230, 10, logString1, Color.black);
         box11.draw(g);
         box10.draw(g);
         box9.draw(g);
@@ -274,6 +275,7 @@ public class InGame2 extends BasicGameState {
                         redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum));
                         gameVariables.playerWon = "p1";
                             /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved into the 11th box because my other counter is already there. Ended the game declaring player 1 won.";
+                        /*log*/logString1 = 
                     }else{
                         if(gameVariables.diceLandedNum != 4) {
                             redCounter1.getBoxIn().setOccupied(false, 0);
