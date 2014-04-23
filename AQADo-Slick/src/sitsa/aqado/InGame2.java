@@ -268,7 +268,38 @@ public class InGame2 extends BasicGameState {
         }
         if(gameVariables.isCounterSelected){
             if(gameVariables.counterSelected == redCounter1){
-                
+                int nextBoxID = (int) redCounter1.getBoxIn().getID() + gameVariables.diceLandedNum;
+                AbstractCounterComponent nextBox = gameVariables.getBoxID(nextBoxID);
+                if(gameVariables.diceLandedNum != 4){
+                    if(nextBox.isSafeSpace()){
+                        // next box is a safe space
+                        if(nextBox.getID() ==11){
+                            //next box is the finish
+                            if(nextBox.getOccupiedBy() == 2){
+                                //occupied by other counter so player won
+                                redCounter1.getBoxIn().setOccupied(false, 0);
+                                redCounter1.setBoxIn(nextBox);
+                                gameVariables.playerWon = "p1";
+                            }else if(!nextBox.isOccupied()){
+                                //not occupied,move counter, not won yet
+                                redCounter1.getBoxIn().setOccupied(false, 0);
+                                redCounter1.setBoxIn(nextBox);
+                            }
+                        }
+                    }
+                    if(nextBox.isOccupied()){
+                        if(nextBox.getOccupiedBy() == 2){
+                            //cant move counter occupied by 2
+                        }else if(nextBox.getOccupiedBy() == 3){
+                            redCounter1.getBoxIn().setOccupied(false, 0);
+                            blueCounter1. // ----!!!! HERE !!!!---- //
+                        }else if(nextBox.getOccupiedBy() == 4){
+                            
+                        }
+                    }
+                }else{
+                    //rolled a 4
+                }
             }
         }
         
@@ -295,7 +326,13 @@ public class InGame2 extends BasicGameState {
                             redCounter1.getBoxIn().setOccupied(false, 0);
                             redCounter1.setBoxIn(gameVariables.getBoxID((int) redCounter1.getBoxIn().getID() - 1));
                             /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Box in occupied by : "+gameVariables.counterSelected.getBoxIn().getOccupiedBy()+"  Moved back to a safe space and was equal to 4.";
-                        }else if(gameVariables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() == 1){
+                        }else if(gameVar
+gameVariables.diceLandedNum != 4) {
+
+
+
+
+iables.diceLandedNum == 4 && redCounter1.getBoxIn().getID() == 1){
                             /*log*/logString = "Counter ID : "+gameVariables.counterSelected.getID()+"  Box in : "+gameVariables.counterSelected.getBoxIn().getID()+"  Did not move backwards was in box1";
                         }
                     }
