@@ -35,8 +35,6 @@ public class NameInput extends BasicGameState {
         	font = new TrueTypeFont(awtFont, false);
 		p1Input = new TextField(container, font, 30, 500, 300, 50);
         	p2Input = new TextField(container, font, 360, 500, 300, 50);
-        	font.loadGlyphs();
-
     }
 
 	@Override
@@ -71,7 +69,6 @@ public class NameInput extends BasicGameState {
         // Input logic
         gameVariables.p1Name = p1Input.getText();
         gameVariables.p2Name = p2Input.getText();
-        font.loadGlyphs();
 	}
 
 	@Override
