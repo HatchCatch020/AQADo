@@ -50,32 +50,6 @@ public class gameVariables {
         return (AbstractCounterComponent) counters.get(new Integer(id));
     }
 
-    public static boolean LegalMove1(AbstractCounterComponent counter){
-        if(nextBox(counter.getBoxIn()).isSafeSpace()){
-            return true;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4){
-            isOccupiedByCounter = true;
-            getCounterOccupiedBy = getCounterByID((int) nextBox(counter.getBoxIn()).getOccupiedBy());
-            return true;
-        }else{
-            return true;
-        }
-    }
-
-    public static boolean isLegalMove2(AbstractCounterComponent counter){
-        if(nextBox(counter.getBoxIn()).isSafeSpace() || nextBox(counter.getBoxIn()).isOccupied() == false){
-            return true;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 3 || nextBox(counter.getBoxIn()).getOccupiedBy() == 4 || counter.getBoxIn().getID() == 11){
-            return false;
-        }else if(nextBox(counter.getBoxIn()).getOccupiedBy() == 1 || nextBox(counter.getBoxIn()).getOccupiedBy() == 2){
-            isOccupiedByCounter = true;
-            getCounterOccupiedBy = getCounterByID((int) nextBox(counter.getBoxIn()).getOccupiedBy());
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public static AbstractBoxComponent nextBox(AbstractBoxComponent after){
         int i = (int) after.getID() + diceLandedNum;
         AbstractBoxComponent nextBox = gameVariables.getBoxID(i);
@@ -87,4 +61,19 @@ public class gameVariables {
         AbstractBoxComponent lastBox = gameVariables.getBoxID(i);
         return lastBox;
     }
-}
+    
+    public static boolean checkMove(AbstractCounterComponent counter){
+        int nextBoxID = (int) counter.getBoxIn().getID() + diceLandedNum;
+        AbstractBoxComponent nextBox = getBoxID(nextBoxID);
+        int previousBoxID = (int) counter.getBoxIn().getID() - 1;
+        AbstractBoxComponent previousBox = getBoxID(previousBoxID);
+        if(diceLandedNum != 4){
+            if(nextBox.getOccupiedBy() == 2){
+                return false;
+            }
+        }else if(diceLandedNum == 4){
+            if(previousBoxID < 1){
+                if(previousBox) /* !!!!----HERE----!!!! */
+            }
+        }
+    }
