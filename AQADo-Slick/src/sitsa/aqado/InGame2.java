@@ -190,8 +190,12 @@ public class InGame2 extends BasicGameState {
             logString = "Select a counter.";
             if(gameVariables.playerTurn.equals("p1")){
                 if(redCounter1.isClicked(gc)){
-                    gameVariables.counterSelected = redCounter1;
-                    gameVariables.isCounterSelected = true;
+                    if(gameVariables.checkMove()){/* !!!!----HERE----!!!! */
+                        gameVariables.counterSelected = redCounter1;
+                        gameVariables.isCounterSelected = true;
+                    }else{
+                        //move cannot be made with this counter
+                    }
                 }else if(redCounter2.isClicked(gc)){
                     gameVariables.counterSelected = redCounter2;
                     gameVariables.isCounterSelected = true;
@@ -322,7 +326,7 @@ public class InGame2 extends BasicGameState {
                     System.out.println("Generated : " + randomInt);
                     //font2.drawString(640, 110, ""+randomInt, Color.black);
                 }
-                gameVariables.diceLandedNum = randomInt;
+                    gameVariables.diceLandedNum = randomInt;
             }
         }else if(gameVariables.diceRolled){
             if(rollButton.isMouseClicked(gc)){
