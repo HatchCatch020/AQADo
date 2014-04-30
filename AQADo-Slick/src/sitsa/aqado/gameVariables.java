@@ -69,15 +69,24 @@ public class gameVariables {
         AbstractBoxComponent previousBox = getBoxID(previousBoxID);
         if(diceLandedNum != 4){
             if(nextBox.getOccupiedBy() == playerOtherCounterID){
+                //Occupied by player other counter
                 return false;
             }else{
+                //Not occupied by player other counter
                 return true;
             }
         }else if(diceLandedNum == 4){
-            if(nextBox.getOccupiedBy() == play4rOtherCounterID){
-                return false;
+            if(previousBoxID < 1){
+                if(nextBox.getOccupiedBy() == playerOtherCounterID){
+                    //Occupied by player other counter
+                    return false;
+                }else{
+                    //Not occupied by player other counter
+                    return true;
+                }
             }else{
-                return true;
+                //less than one can't move back
+                return false;
             }
         }
     }
