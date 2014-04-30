@@ -190,32 +190,44 @@ public class InGame2 extends BasicGameState {
             logString = "Select a counter.";
             if(gameVariables.playerTurn.equals("p1")){
                 if(redCounter1.isClicked(gc)){
-                    if(gameVariables.checkMove()){/* !!!!----HERE----!!!! */
+                    if(gameVariables.checkMove(redCounter1, 2)){
                         gameVariables.counterSelected = redCounter1;
                         gameVariables.isCounterSelected = true;
                     }else{
-                        //move cannot be made with this counter
+                        logString1 = "Move cannot be made with this counter.";
                     }
                 }else if(redCounter2.isClicked(gc)){
-                    gameVariables.counterSelected = redCounter2;
-                    gameVariables.isCounterSelected = true;
+                    if(gameVariables.checkMove(redCounter2, 1)){
+                        gameVariables.counterSelected = redCounter2;
+                        gameVariables.isCounterSelected = true;
+                    }else{
+                        logString1 = "Move cannot be made with this counter.";
+                    }
                 }else if(blueCounter1.isClicked(gc) || blueCounter2.isClicked(gc)){
                     logString1 = "Must be player 1's counter ";
                 }
             }
             if(gameVariables.playerTurn.equals("p2")){
                 if(blueCounter1.isClicked(gc)){
-                    gameVariables.counterSelected = blueCounter1;
-                    gameVariables.isCounterSelected = true;
+                    if(checkMove(blueCounter1, 4)){
+                        gameVariables.counterSelected = blueCounter1;
+                        gameVariables.isCounterSelected = true;
+                    }else{
+                        logString1 = "Move cannot be made with this counter.";
+                    }
                 }else if(blueCounter2.isClicked(gc)){
-                    gameVariables.counterSelected = blueCounter2;
-                    gameVariables.isCounterSelected = true;
+                    if(checkMove(blueCounter2, 3)){
+                        gameVariables.counterSelected = blueCounter2;
+                        gameVariables.isCounterSelected = true;
+                    }else{
+                        logString1 = "Move cannot be made with this counter.";
+                    }
                 }else if(redCounter1.isClicked(gc) || redCounter2.isClicked(gc)){
-                    logString1 = "Must be player 2's counter";
+                    logString1 = "Must be player 2's counte.r";
                 }
             }
         }else if(!gameVariables.diceRolled){
-            logString1 = "Roll the dice";
+            logString1 = "Roll the dice.";
         }
         if(gameVariables.isCounterSelected){
             if(gameVariables.counterSelected == redCounter1){
@@ -224,29 +236,44 @@ public class InGame2 extends BasicGameState {
                 if(gameVariables.diceLandedNum != 4){
                     if(nextBox.isSafeSpace()){
                         // next box is a safe space
-                        if(nextBox.getID() == 11){
+                        if(nextBox.getID() == 11 || nextBox.getID() > 11){
                             //next box is the finish
-                            if(nextBox.getOccupiedBy() == 2){
-                                //occupied by other counter so player won
-                                redCounter1.getBoxIn().setOccupied(false, 0);
-                                redCounter1.setBoxIn(nextBox);
-                                gameVariables.playerWon = "p1";
-                            }else if(!nextBox.isOccupied()){
-                                //not occupied,move counter, not won yet
-                                redCounter1.getBoxIn().setOccupied(false, 0);
-                                redCounter1.setBoxIn(nextBox);
+                            if(nextBox.getID() == 11){
+                                if(nextBox.getOccupiedBy() == 2){
+                                    //occupied by other counter so player won
+                                    redCounter1.getBoxIn().setOccupied(false, 0);
+                                    redCounter1.setBoxIn(nextBox);
+                                    gameVariables.playerWon = "p1";
+                                }else if(!nextBox.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    redCounter1.getBoxIn().setOccupied(false, 0);
+                                    redCounter1.setBoxIn(nextBox);
+                                }
+                            }else if(nextBox.getID() > 11){
+                                if(box11.getOccupiedBy() == 2){
+                                    //occupied by other counter so player won
+                                    redCounter1.getBoxIn().setOccupied(false, 0);
+                                    redCounter1.setBoxIn(box11);
+                                    gameVariables.playerWon = "p1";
+                                }else if(!box11.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    redCounter1.getBoxIn().setOccupied(false, 0);
+                                    redCounter1.setBoxIn(box11);
+                                }
                             }
                         }
                     }else if(nextBox.isOccupied()){
                         if(nextBox.getOccupiedBy() == 2){
-                            //cant move counter occupied by 2
+                            logString1 = "Move cannot be made occupied by your other counter."
                         }else if(nextBox.getOccupiedBy() == 3){
                             //occupied by opponent move opponent's piece to start
+                            logString1 = "Player two's counter was moved back to start."
                             redCounter1.getBoxIn().setOccupied(false, 0);
                             blueCounter1.setBoxIn(box1);
                             redCounter1.setBoxIn(nextBox);
                         }else if(nextBox.getOccupiedBy() == 4){
                             //occupied by opponent move opponent's piece to start
+                            logString1 = "Player two's counter was moved back to start."
                             redCounter1.getBoxIn().setOccupied(false, 0);
                             blueCounter2.setBoxIn(box1);
                             redCounter1.setBoxIn(nextBox);
@@ -266,6 +293,207 @@ public class InGame2 extends BasicGameState {
                         //move back one
                         redCounter1.getBoxIn().setOccupied(false, 0);
                         redCounter1.setBoxIn(previousBox);
+                    }
+                }
+                gameVariables.moveMade = true;
+            }
+            if(gameVariables.counterSelected == redCounter2){
+                int nextBoxID = (int) redCounter2.getBoxIn().getID() + gameVariables.diceLandedNum;
+                AbstractBoxComponent nextBox = gameVariables.getBoxID(nextBoxID);
+                if(gameVariables.diceLandedNum != 4){
+                    if(nextBox.isSafeSpace()){
+                        // next box is a safe space
+                        if(nextBox.getID() == 11 || nextBox.getID() > 11){
+                            //next box is the finish
+                            if(nextBox.getID() == 11){
+                                if(nextBox.getOccupiedBy() == 1){
+                                    //occupied by other counter so player won
+                                    redCounter2.getBoxIn().setOccupied(false, 0);
+                                    redCounter2.setBoxIn(nextBox);
+                                    gameVariables.playerWon = "p1";
+                                }else if(!nextBox.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    redCounter2.getBoxIn().setOccupied(false, 0);
+                                    redCounter2.setBoxIn(nextBox);
+                                }
+                            }else if(nextBox.getID() > 11){
+                                if(box11.getOccupiedBy() == 1){
+                                    //occupied by other counter so player won
+                                    redCounter2.getBoxIn().setOccupied(false, 0);
+                                    redCounter2.setBoxIn(box11);
+                                    gameVariables.playerWon = "p1";
+                                }else if(!box11.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    redCounter2.getBoxIn().setOccupied(false, 0);
+                                    redCounter2.setBoxIn(box11);
+                                }
+                            }
+                        }
+                    }else if(nextBox.isOccupied()){
+                        if(nextBox.getOccupiedBy() == 1){
+                            logString1 = "Move cannot be made occupied by your other counter."
+                        }else if(nextBox.getOccupiedBy() == 1){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player one's counter was moved back to start."
+                            redCounter2.getBoxIn().setOccupied(false, 0);
+                            blueCounter1.setBoxIn(box1);
+                            redCounter2.setBoxIn(nextBox);
+                        }else if(nextBox.getOccupiedBy() == 2){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player one's counter was moved back to start."
+                            redCounter2.getBoxIn().setOccupied(false, 0);
+                            blueCounter2.setBoxIn(box1);
+                            redCounter2.setBoxIn(nextBox);
+                        }
+                    }else if(gameVariables.diceLandedNum == 1 || gameVariables.diceLandedNum == 2 || gameVariables.diceLandedNum == 3){
+                        //make legal move
+                        redCounter2.getBoxIn().setOccupied(false, 0);
+                        redCounter2.setBoxIn(nextBox);
+                    }
+                }else{
+                    //rolled a 4 move back one
+                    int previousBoxID = (int) redCounter2.getBoxIn().getID() - 1;
+                    AbstractBoxComponent previousBox = gameVariables.getBoxID(previousBoxID);
+                    if(previousBox.getID() < 1){
+                        // Cant move back
+                    }else if(previousBox.getID() >= 1){
+                        //move back one
+                        redCounter2.getBoxIn().setOccupied(false, 0);
+                        redCounter2.setBoxIn(previousBox);
+                    }
+                }
+                gameVariables.moveMade = true;
+            }
+            if(gameVariables.counterSelected == blueCounter1){
+                int nextBoxID = (int) blueCounter1.getBoxIn().getID() + gameVariables.diceLandedNum;
+                AbstractBoxComponent nextBox = gameVariables.getBoxID(nextBoxID);
+                if(gameVariables.diceLandedNum != 4){
+                    if(nextBox.isSafeSpace()){
+                        // next box is a safe space
+                        if(nextBox.getID() == 11 || nextBox.getID() > 11){
+                            //next box is the finish
+                            if(nextBox.getID() == 11){
+                                if(nextBox.getOccupiedBy() == 4){
+                                    //occupied by other counter so player won
+                                    blueCounter1.getBoxIn().setOccupied(false, 0);
+                                    blueCounter1.setBoxIn(nextBox);
+                                    gameVariables.playerWon = "p2";
+                                }else if(!nextBox.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    blueCounter1.getBoxIn().setOccupied(false, 0);
+                                    blueCounter1.setBoxIn(nextBox);
+                                }
+                            }else if(nextBox.getID() > 11){
+                                if(box11.getOccupiedBy() == 4){
+                                    //occupied by other counter so player won
+                                    blueCounter1.getBoxIn().setOccupied(false, 0);
+                                    blueCounter1.setBoxIn(box11);
+                                    gameVariables.playerWon = "p2";
+                                }else if(!box11.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    blueCounter1.getBoxIn().setOccupied(false, 0);
+                                    blueCounter1.setBoxIn(box11);
+                                }
+                            }
+                        }
+                    }else if(nextBox.isOccupied()){
+                        if(nextBox.getOccupiedBy() == 4){
+                            logString1 = "Move cannot be made occupied by your other counter."
+                        }else if(nextBox.getOccupiedBy() == 3){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player one's counter was moved back to start."
+                            blueCounter1.getBoxIn().setOccupied(false, 0);
+                            redCounter1.setBoxIn(box1);
+                            blueCounter1.setBoxIn(nextBox);
+                        }else if(nextBox.getOccupiedBy() == 4){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player one's counter was moved back to start."
+                            blueCounter1.getBoxIn().setOccupied(false, 0);
+                            redCounter2.setBoxIn(box1);
+                            blueCounter1.setBoxIn(nextBox);
+                        }
+                    }else if(gameVariables.diceLandedNum == 1 || gameVariables.diceLandedNum == 2 || gameVariables.diceLandedNum == 3){
+                        //make legal move
+                        blueCounter1.getBoxIn().setOccupied(false, 0);
+                        blueCounter1.setBoxIn(nextBox);
+                    }
+                }else{
+                    //rolled a 4 move back one
+                    int previousBoxID = (int) blueCounter1.getBoxIn().getID() - 1;
+                    AbstractBoxComponent previousBox = gameVariables.getBoxID(previousBoxID);
+                    if(previousBox.getID() < 1){
+                        // Cant move back
+                    }else if(previousBox.getID() >= 1){
+                        //move back one
+                        blueCounter1.getBoxIn().setOccupied(false, 0);
+                        blueCounter1.setBoxIn(previousBox);
+                    }
+                }
+                gameVariables.moveMade = true;
+            }
+            if(gameVariables.counterSelected == blueCounter2){
+                int nextBoxID = (int) blueCounter2.getBoxIn().getID() + gameVariables.diceLandedNum;
+                AbstractBoxComponent nextBox = gameVariables.getBoxID(nextBoxID);
+                if(gameVariables.diceLandedNum != 4){
+                    if(nextBox.isSafeSpace()){
+                        // next box is a safe space
+                        if(nextBox.getID() == 11 || nextBox.getID() > 11){
+                            //next box is the finish
+                            if(nextBox.getID() == 11){
+                                if(nextBox.getOccupiedBy() == 3){
+                                    //occupied by other counter so player won
+                                    blueCounter2.getBoxIn().setOccupied(false, 0);
+                                    blueCounter2.setBoxIn(nextBox);
+                                    gameVariables.playerWon = "p2";
+                                }else if(!nextBox.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    blueCounter2.getBoxIn().setOccupied(false, 0);
+                                    blueCounter2.setBoxIn(nextBox);
+                                }
+                            }else if(nextBox.getID() > 11){
+                                if(box11.getOccupiedBy() == 3){
+                                    //occupied by other couner so player won
+                                    blueCounter2.getBoxIn().setOccupied(false, 0);
+                                    blueCounter2.setBoxIn(box11);
+                                    gameVariables.playerWon = "p2";
+                                }else if(!box11.isOccupied()){
+                                    //not occupied,move counter, not won yet
+                                    blueCounter2.getBoxIn().setOccupied(false, 0);
+                                    blueCounter2.setBoxIn(box11);
+                                }
+                            }
+                        }
+                    }else if(nextBox.isOccupied()){
+                        if(nextBox.getOccupiedBy() == 3){
+                            logString1 = "Move cannot be made occupied by your other counter."
+                        }else if(nextBox.getOccupiedBy() == 1){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player one's counter was moved back to start."
+                            blueCounter2.getBoxIn().setOccupied(false, 0);
+                            redCounter1.setBoxIn(box1);
+                            blueCounter2.setBoxIn(nextBox);
+                        }else if(nextBox.getOccupiedBy() == 2){
+                            //occupied by opponent move opponent's piece to start
+                            logString1 = "Player two's counter was moved back to start."
+                            blueCounter2.getBoxIn().setOccupied(false, 0);
+                            redCounter2.setBoxIn(box1);
+                            blueCounter2.setBoxIn(nextBox);
+                        }
+                    }else if(gameVariables.diceLandedNum == 1 || gameVariables.diceLandedNum == 2 || gameVariables.diceLandedNum == 3){
+                        //make legal move
+                        blueCounter2.getBoxIn().setOccupied(false, 0);
+                        blueCounter2.setBoxIn(nextBox);
+                    }
+                }else{
+                    //rolled a 4 move back one
+                    int previousBoxID = (int) blueCounter2.getBoxIn().getID() - 1;
+                    AbstractBoxComponent previousBox = gameVariables.getBoxID(previousBoxID);
+                    if(previousBox.getID() < 1){
+                        // Cant move back
+                    }else if(previousBox.getID() >= 1){
+                        //move back one
+                        blueCounter2.getBoxIn().setOccupied(false, 0);
+                        blueCounter2.setBoxIn(previousBox);
                     }
                 }
                 gameVariables.moveMade = true;
