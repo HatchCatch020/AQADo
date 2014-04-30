@@ -62,18 +62,22 @@ public class gameVariables {
         return lastBox;
     }
     
-    public static boolean checkMove(AbstractCounterComponent counter){
+    public static boolean checkMove(AbstractCounterComponent counter, int playerOtherCounterID){
         int nextBoxID = (int) counter.getBoxIn().getID() + diceLandedNum;
         AbstractBoxComponent nextBox = getBoxID(nextBoxID);
         int previousBoxID = (int) counter.getBoxIn().getID() - 1;
         AbstractBoxComponent previousBox = getBoxID(previousBoxID);
         if(diceLandedNum != 4){
-            if(nextBox.getOccupiedBy() == 2){
+            if(nextBox.getOccupiedBy() == playerOtherCounterID){
                 return false;
+            }else{
+                return true;
             }
         }else if(diceLandedNum == 4){
-            if(previousBoxID < 1){
-                if(previousBox) /* !!!!----HERE----!!!! */
+            if(nextBox.getOccupiedBy() == play4rOtherCounterID){
+                return false;
+            }else{
+                return true;
             }
         }
     }
