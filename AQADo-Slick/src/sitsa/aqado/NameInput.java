@@ -22,6 +22,7 @@ public class NameInput extends BasicGameState {
     private Button returnButton;
     private TrueTypeFont font;
     private TextField p1Input, p2Input;
+    private boolean p1InputState = false;
 
 	public NameInput(int state) {
 		this.state = state;
@@ -33,7 +34,7 @@ public class NameInput extends BasicGameState {
         	returnButton = new Button(245, 300, 200, 60, Color.cyan);
  		Font awtFont = new java.awt.Font("Arial", java.awt.Font.BOLD, 16);
         	font = new TrueTypeFont(awtFont, false);
-		p1Input = new TextField(container, font, 30, 500, 300, 50);
+        	p1Input = new TextField(container, font, 30, 500, 300, 50);	
         	p2Input = new TextField(container, font, 360, 500, 300, 50);
     }
 
