@@ -30,8 +30,6 @@ public class AQADo extends StateBasedGame {
 	}
 	
 	public static void main(String[] args){
-        //https://www.facebook.com/photo.php?v=10201953806269989&set=vb.242640715860675&type=2&theater
-        //https://www.facebook.com/photo.php?v=10201891215505259&set=vb.242640715860675&type=2&theater
 		try{
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new AQADo("AQADo"));
