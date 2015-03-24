@@ -12,7 +12,7 @@ import sitsa.aqado.gameVariables;
 public abstract class AbstractBoxComponent implements boxComponent {
 
     protected float x, y, width, height, counterNum, id;
-    protected boolean occupied, safeSapce, drawn;
+    protected boolean occupied, safeSapce, drawn, textBox;
     protected AbstractBoxComponent nextBox;
 
     public AbstractBoxComponent(float x, float y, float width, float height, float boxNum){
@@ -23,6 +23,7 @@ public abstract class AbstractBoxComponent implements boxComponent {
         this.id = boxNum;
         this.occupied = false;
         this.drawn = false;
+        this.textBox = false;
         gameVariables.addBox(this);
     }
 
@@ -70,6 +71,11 @@ public abstract class AbstractBoxComponent implements boxComponent {
     @Override
     public void setboxDrawn(boolean drawn) {
         this.drawn = drawn;
+    }
+    
+    @Override
+    public void setTextBox(boolean textBox){
+        this.textBox = textBox;
     }
 
     @Override
@@ -122,6 +128,11 @@ public abstract class AbstractBoxComponent implements boxComponent {
     @Override
     public boolean isBoxDrawn() {
         return this.drawn;
+    }
+    
+    @Override
+    public boolean isTextBox(){
+        return this.textBox;
     }
 
 
