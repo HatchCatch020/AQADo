@@ -24,6 +24,7 @@ public interface boxComponent {
     public void setNextBox(AbstractBoxComponent nextBox);
     public void setSafeSpace(boolean safeSpace);
     public void setboxDrawn(boolean drawn);
+    public void isTextBox(boolean textBox);
     public float getX();
     public float getY();
     public float getWidth();
@@ -34,4 +35,5 @@ public interface boxComponent {
     public boolean isOccupied();
     public boolean isSafeSpace();
     public boolean isBoxDrawn();
+    public boolean isTextBox();
 }
