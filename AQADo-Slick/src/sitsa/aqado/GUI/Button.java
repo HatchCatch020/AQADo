@@ -15,6 +15,7 @@ public interface Button {
 
     public void draw(Graphics g);
     public void update(int delta);
+    public void disabled(boolean i);
     public void setLocation(float x, float y);
     public void setX(float x);
     public void setY(float y);
