@@ -14,6 +14,7 @@ import org.newdawn.slick.Graphics;
 public abstract class AbstractButton implements Button {
     protected float x, y, width, height;
     protected Color fillColor;
+    protected boolean disabled;
 
     public AbstractButton(float x, float y, float width, float height, Color fillColor){
         this.x = x;
@@ -21,6 +22,7 @@ public abstract class AbstractButton implements Button {
         this.width = width;
         this.height = height;
         this.fillColor = fillColor;
+        this.disabled = false;
     }
 
     @Override
@@ -53,6 +55,11 @@ public abstract class AbstractButton implements Button {
     public void setFillColor(Color fillColor){
         this.fillColor = fillColor;
     }
+    
+    @Override
+    public void setDisabled(boolean i){
+        this.disabled = i;
+    }
 
     @Override
     public float getX() {
@@ -77,7 +84,11 @@ public abstract class AbstractButton implements Button {
     @Override
     public boolean isMouseOn(GameContainer gc) {
         if((gc.getInput().getMouseX() >= x) && (gc.getInput().getMouseX() <= x + width) && (gc.getInput().getMouseY() >= y) && (gc.getInput().getMouseY() <= y + height)) {
-            return true;
+            if(disabled){
+                return false;
+            }else{
+                return true;
+            }
         } else {
             return false;
         }
@@ -86,7 +97,11 @@ public abstract class AbstractButton implements Button {
     @Override
     public boolean isMouseClicked(GameContainer gc) {
         if((gc.getInput().getMouseX() >= x) && (gc.getInput().getMouseX() <= x + width) && (gc.getInput().getMouseY() >= y) && (gc.getInput().getMouseY() <= y + height) && gc.getInput().isMousePressed(0)) {
-            return true;
+            if(disabled){
+                return true;
+            }else{
+                return false;
+            }
         } else {
             return false;
         }
