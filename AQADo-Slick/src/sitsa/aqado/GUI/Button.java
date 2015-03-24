@@ -15,17 +15,18 @@ public interface Button {
 
     public void draw(Graphics g);
     public void update(int delta);
-    public void disabled(boolean i);
     public void setLocation(float x, float y);
     public void setX(float x);
     public void setY(float y);
     public void setWidth(float width);
     public void setHeight(float height);
     public void setFillColor(Color color);
+    public void setDisabled(boolean i);
     public float getX();
     public float getY();
     public float getHeight();
     public float getWidth();
     public boolean isMouseOn(GameContainer container);
     public boolean isMouseClicked(GameContainer container);
+    public boolean isDisabled();
 }
