@@ -28,5 +28,4 @@ public interface Button {
     public float getWidth();
     public boolean isMouseOn(GameContainer container);
     public boolean isMouseClicked(GameContainer container);
-    public boolean isDisabled();
 }
